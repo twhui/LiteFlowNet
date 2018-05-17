@@ -29,14 +29,21 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ cd liteflownet</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
-3. Run the training script
-<pre><code>cd liteflownet/models/liteflownet-Things3D</code></pre>
+3. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
+<pre><code>$ cd liteflownet/models/TEMPLATE</code></pre>
+<pre><code>$ cp solver.prototxt.template solver.prototxt</code></pre>
+<pre><code>$ cp train.prototxt.template train.prototxt</code></pre>
+  
+4. Run the training script
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Testing
-<pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
-Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "single" (e.g. KITTI). 
+1. Several trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>liteflownet/models/trained</code>. You can replace "MODEL" to one of them in the line <code>cnn_model = './trained/MODEL'</code> of <code>liteflownet/models/test_MODE.py</code>.
 
+2. Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "iter" (e.g. KITTI)
+
+3. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
+ 
 # License and Citation
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
 
