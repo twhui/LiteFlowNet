@@ -1,4 +1,4 @@
-This page is now under construction!
+<strong>This page is now under construction!</strong>
 
 # LiteFlowNet
 This repository is the release of <strong>LiteFlowNet</strong> for our paper <strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight).
@@ -22,12 +22,16 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 # Compiling
 <pre><code>$ make -j 8 all tools pycaffe</code></pre>
 
-# Training set preparation
-<pre><code>$ make-lmdbs-train.sh</code></pre>
-
 # Training
+1. Download <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/raw_data/flyingthings3d__frames_cleanpass.tar"> RGB image pairs</a> (37GB) and <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/derived_data/flyingthings3d__optical_flow.tar.bz2"> flow fields</a> (311GB) for Things3D dataset.
+
+2. Prepare the training set
+<pre><code>$ cd liteflownet</code></pre>
+<pre><code>$ ./make-lmdbs-train.sh</code></pre>
+
+3. Run the training script
 <pre><code>cd liteflownet/models/liteflownet-Things3D</code></pre>
-<pre><code>$ ./train.py -gpu X 2>&1 | tee ./log.txt</code></pre>
+<pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Testing
 <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
