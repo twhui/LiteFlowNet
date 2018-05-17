@@ -5,7 +5,7 @@ This repository is the release of <strong>LiteFlowNet</strong> for our paper <st
 
 For more details about LiteFlowNet, please refer to <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"> my project page</a>.
 
-It comes as a fork of the modified caffe master branch from <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a>, new layers, scripts, and trained models.
+It comes as a fork of the modified caffe master branch from <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with new layers, scripts, and trained models.
 
 # Prerequisites
 Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
@@ -22,8 +22,16 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 # Compiling
 <pre><code>$ make -j 8 all tools pycaffe</code></pre>
 
-# Trained models, training and testing codes
-(To appear)
+# Training set preparation
+<pre><code>$ make-lmdbs-train.sh</code></pre>
+
+# Training
+<pre><code>cd liteflownet/models/liteflownet-Things3D</code></pre>
+<pre><code>$ ./train.py -gpu X 2>&1 | tee ./log.txt</code></pre>
+
+# Testing
+<pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
+Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "single" (e.g. KITTI). 
 
 # License and Citation
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
