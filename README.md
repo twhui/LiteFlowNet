@@ -1,4 +1,4 @@
-<strong>This page is now under construction!</strong>
+# This page is now under construction!</strong>
 
 # LiteFlowNet
 This repository is the release of <strong>LiteFlowNet</strong> for our paper <strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight).
@@ -53,9 +53,9 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 The trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
 # Testing	
-1. Replace "MODEL" to one of the trained models in the line <code>cnn_model = './trained/MODEL'</code> of <code>LiteFlowNet/models/test_MODE.py</code>.
+1. Replace <code>MODEL</code> in line 9 of <code>LiteFlowNet/models/test_MODE.py</code> (<code>cnn_model = './trained/MODEL'</code>) to one of the trained models (e.g. <code>liteflownet</code>).
 
-2. Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "iter" (e.g. KITTI).
+2. Replace <code>MODE</code> to <code>batch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
 
 3. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
 
