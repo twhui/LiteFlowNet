@@ -24,6 +24,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 5. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>LiteFlowNet/include/caffe/util/cudnn.hpp</code>.
     
 # Compiling
+<pre><code>$ cd LiteFlowNet</code></pre>
 <pre><code>$ make -j 8 all tools pycaffe</code></pre>
 
 # Datasets
@@ -34,7 +35,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 
 # Training
 1. Prepare the training set
-<pre><code>$ cd LiteFlowNet</code></pre>
+<pre><code>$ cd LiteFlowNet/data</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
 2. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
