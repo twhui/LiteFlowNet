@@ -44,7 +44,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ cp train.prototxt.template train.prototxt</code></pre>
 
 3. Create a soft link in your model folder (e.g. <code>LiteFlowNet/models/TEMPLATE</code>)
-<pre><code>$ln -s ../../build/tools bin</code></pre>
+<pre><code>$ ln -s ../../build/tools bin</code></pre>
 
 4. Run the training script	
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
