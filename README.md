@@ -38,12 +38,12 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ cd LiteFlowNet/data</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
-2. Copy files from <code>LiteFlowNet/models/TEMPLATE</code> to a new model folder (e.g. NEW). Edit all the files and make sure all settings are correct.
+2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. NEW). Edit all the files and make sure all settings are correct.
 <pre><code>$ mkdir LiteFlowNet/models/NEW</code></pre>
 <pre><code>$ cd LiteFlowNet/models/NEW</code></pre>	
-<pre><code>$ cp ../TEMPLATE/solver.prototxt.template solver.prototxt</code></pre>	
-<pre><code>$ cp ../TEMPLATE/train.prototxt.template train.prototxt</code></pre>
-<pre><code>$ cp ../TEMPLATE/train.py.template train.py</code></pre>		
+<pre><code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code></pre>	
+<pre><code>$ cp ../training_template/train.prototxt.template train.prototxt</code></pre>
+<pre><code>$ cp ../training_template/train.py.template train.py</code></pre>		
 
 3. Create a soft link in your new model folder
 <pre><code>$ ln -s ../../build/tools bin</code></pre>
