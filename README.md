@@ -54,12 +54,17 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 # Trained models	
 The trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
-# Testing	
-1. Replace <code>MODEL</code> in line 9 of <code>LiteFlowNet/models/test_MODE.py</code> (<code>cnn_model = './trained/MODEL'</code>) to one of the trained models (e.g. <code>liteflownet</code>).
+# Testing
+1. <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
 
-2. Replace <code>MODE</code> to <code>batch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
+2. Create a soft link in the folder <code>/testing</code>
+<pre><code>$ ln -s ../../build/tools bin</code></pre>
 
-3. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
+3. Replace <code>MODE</code> in <code>./test_MODE.py</code> to <code>batch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
+
+4. Replace <code>MODEL</code> in line 10 of <code>./test_MODE.py</code> (<code>cnn_model = 'MODEL'</code>) to one of the trained models (e.g. <code>liteflownet</code>).
+
+5. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results/YOUR_TESTING_SET</code></pre>
 
 # License and Citation	
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
