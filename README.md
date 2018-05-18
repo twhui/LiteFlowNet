@@ -10,7 +10,7 @@ It comes as a fork of the modified caffe master branch from <a href="https://git
 # Prerequisites
 Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
 
-For opencv 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/liteflownet/src/caffe/layersresample_layer.cu</code>.
+For opencv 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/LiteFlowNet/src/caffe/layersresample_layer.cu</code>.
 
 If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
 1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>	
@@ -21,7 +21,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 
 4. <pre><code>sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
 
-5. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>liteflownet/include/caffe/util/cudnn.hpp</code>.
+5. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>LiteFlowNet/include/caffe/util/cudnn.hpp</code>.
     
 # Compiling
 <pre><code>$ make -j 8 all tools pycaffe</code></pre>
@@ -33,11 +33,11 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 
 # Training
 1. Prepare the training set
-<pre><code>$ cd liteflownet</code></pre>
+<pre><code>$ cd LiteFlowNet</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
 2. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
-<pre><code>$ cd liteflownet/models/TEMPLATE</code></pre>	
+<pre><code>$ cd LiteFlowNet/models/TEMPLATE</code></pre>	
 <pre><code>$ cp solver.prototxt.template solver.prototxt</code></pre>	
 <pre><code>$ cp train.prototxt.template train.prototxt</code></pre>
 
@@ -45,7 +45,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Testing	
-1. Several trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>liteflownet/models/trained</code>. You can replace "MODEL" to one of them in the line <code>cnn_model = './trained/MODEL'</code> of <code>liteflownet/models/test_MODE.py</code>.
+1. Several trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. You can replace "MODEL" to one of them in the line <code>cnn_model = './trained/MODEL'</code> of <code>LiteFlowNet/models/test_MODE.py</code>.
 
 2. Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "iter" (e.g. KITTI).
 
