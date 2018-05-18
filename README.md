@@ -22,25 +22,26 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 # Compiling
 <pre><code>$ make -j 8 all tools pycaffe</code></pre>
 
+# Dataset
+1. <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> (31GB) and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>. 
+
+2. <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/raw_data/flyingthings3d__frames_cleanpass.tar"> RGB image pairs (clean pass)</a> (37GB) and <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/derived_data/flyingthings3d__optical_flow.tar.bz2"> flow fields</a> (311GB) for Things3D dataset.
+
+2. <a href="http://files.is.tue.mpg.de/sintel/MPI-Sintel-complete.zip"> Sintel dataset (clean + final passes)</a> (5.3GB).
+
+3. <a href="http://www.cvlibs.net/download.php?file=data_stereo_flow.zip"> KITTI12 dataset</a> (2GB) and <a href="http://www.cvlibs.net/download.php?file=data_scene_flow.zip"> KITTI15 dataset</a> (2GB) (Simple registration is required).
+
 # Training
-1a. Download <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>. 
-
-1b. Download <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/raw_data/flyingthings3d__frames_cleanpass.tar"> RGB image pairs</a> (37GB) and <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/derived_data/flyingthings3d__optical_flow.tar.bz2"> flow fields</a> (311GB) for Things3D dataset.
-
-1c. Download <a href="http://files.is.tue.mpg.de/sintel/MPI-Sintel-complete.zip"> Sintel dataset</a> (5.3GB).
-
-1d. Download <a href="http://www.cvlibs.net/download.php?file=data_stereo_flow.zip"> KITTI12 dataset</a> (2GB) and <a href="http://www.cvlibs.net/download.php?file=data_scene_flow.zip"> KITTI15 dataset</a> (2GB).
-
-2. Prepare the training set
+1. Prepare the training set
 <pre><code>$ cd liteflownet</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
-3. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
+2. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
 <pre><code>$ cd liteflownet/models/TEMPLATE</code></pre>
 <pre><code>$ cp solver.prototxt.template solver.prototxt</code></pre>
 <pre><code>$ cp train.prototxt.template train.prototxt</code></pre>
   
-4. Run the training script
+2. Run the training script
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Testing
