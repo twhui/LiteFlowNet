@@ -49,8 +49,11 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 4. Run the training script	
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
+# Trained models	
+The trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
+
 # Testing	
-1. Several trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. You can replace "MODEL" to one of them in the line <code>cnn_model = './trained/MODEL'</code> of <code>LiteFlowNet/models/test_MODE.py</code>.
+1. Replace "MODEL" to one of the trained models in the line <code>cnn_model = './trained/MODEL'</code> of <code>LiteFlowNet/models/test_MODE.py</code>.
 
 2. Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "iter" (e.g. KITTI).
 
