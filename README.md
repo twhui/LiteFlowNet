@@ -34,7 +34,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 4. <a href="http://www.cvlibs.net/download.php?file=data_stereo_flow.zip"> KITTI12 dataset</a> (2GB) and <a href="http://www.cvlibs.net/download.php?file=data_scene_flow.zip"> KITTI15 dataset</a> (2GB) (Simple registration is required).
 
 # Training
-1. Prepare the training set
+1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
