@@ -1,63 +1,37 @@
-<strong>This page is now under construction!</strong>
+# Caffe
 
-# LiteFlowNet
-This repository is the release of <strong>LiteFlowNet</strong> for our paper <strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight).
+[![Build Status](https://travis-ci.org/BVLC/caffe.svg?branch=master)](https://travis-ci.org/BVLC/caffe)
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
-For more details about LiteFlowNet, please refer to <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"> my project page</a>.
+Caffe is a deep learning framework made with expression, speed, and modularity in mind.
+It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.eecs.berkeley.edu)) and community contributors.
 
-It comes as a fork of the modified caffe master branch from <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with new layers, scripts, and trained models.
+Check out the [project site](http://caffe.berkeleyvision.org) for all the details like
 
-# Prerequisites
-Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
+- [DIY Deep Learning for Vision with Caffe](https://docs.google.com/presentation/d/1UeKXVgRvvxg9OUdh_UiC5G71UMscNPlvArsWER41PsU/edit#slide=id.p)
+- [Tutorial Documentation](http://caffe.berkeleyvision.org/tutorial/)
+- [BVLC reference models](http://caffe.berkeleyvision.org/model_zoo.html) and the [community model zoo](https://github.com/BVLC/caffe/wiki/Model-Zoo)
+- [Installation instructions](http://caffe.berkeleyvision.org/installation.html)
 
-For opencv 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/liteflownet/src/caffe/layersresample_layer.cu</code>.
+and step-by-step examples.
 
-If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
-1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>
-2. Rename <code>cudnn.h</code> to <code>cudnn-5.1.h</code> in the folder <code>/cuda-8-cudnn-5.1/include</code>
-3. <pre><code>sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code></pre>
-5. <pre><code>sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>
-6. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>liteflownet/include/caffe/util/cudnn.hpp</code>. 
+[![Join the chat at https://gitter.im/BVLC/caffe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/BVLC/caffe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# Compiling
-<pre><code>$ make -j 8 all tools pycaffe</code></pre>
+Please join the [caffe-users group](https://groups.google.com/forum/#!forum/caffe-users) or [gitter chat](https://gitter.im/BVLC/caffe) to ask questions and talk about methods and models.
+Framework development discussions and thorough bug reports are collected on [Issues](https://github.com/BVLC/caffe/issues).
 
-# Dataset
-1. <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> (31GB) and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>. 
+Happy brewing!
 
-2. <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/raw_data/flyingthings3d__frames_cleanpass.tar"> RGB image pairs (clean pass)</a> (37GB) and <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/derived_data/flyingthings3d__optical_flow.tar.bz2"> flow fields</a> (311GB) for Things3D dataset.
+## License and Citation
 
-2. <a href="http://files.is.tue.mpg.de/sintel/MPI-Sintel-complete.zip"> Sintel dataset (clean + final passes)</a> (5.3GB).
+Caffe is released under the [BSD 2-Clause license](https://github.com/BVLC/caffe/blob/master/LICENSE).
+The BVLC reference models are released for unrestricted use.
 
-3. <a href="http://www.cvlibs.net/download.php?file=data_stereo_flow.zip"> KITTI12 dataset</a> (2GB) and <a href="http://www.cvlibs.net/download.php?file=data_scene_flow.zip"> KITTI15 dataset</a> (2GB) (Simple registration is required).
+Please cite Caffe in your publications if it helps your research:
 
-# Training
-1. Prepare the training set
-<pre><code>$ cd liteflownet</code></pre>
-<pre><code>$ ./make-lmdbs-train.sh</code></pre>
-
-2. Copy files from <code>TEMPLATE</code> and edit all the prototxt files and make sure all settings are correct
-<pre><code>$ cd liteflownet/models/TEMPLATE</code></pre>
-<pre><code>$ cp solver.prototxt.template solver.prototxt</code></pre>
-<pre><code>$ cp train.prototxt.template train.prototxt</code></pre>
-  
-2. Run the training script
-<pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
-
-# Testing
-1. Several trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>liteflownet/models/trained</code>. You can replace "MODEL" to one of them in the line <code>cnn_model = './trained/MODEL'</code> of <code>liteflownet/models/test_MODE.py</code>.
-
-2. Replace MODE to "batch" if all the images has the same resolution (e.g. Sintel), otherwise replace it to "iter" (e.g. KITTI)
-
-3. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt ./results/YOUR_TESTING_SET</code></pre>
- 
-# License and Citation
-All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
-
-<pre><code>@InProceedings{hui18liteflownet,  
-  author = {Tak-Wai Hui and Xiaoou Tang and Chen Change Loy},  
-  title  = {LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation},  
-  booktitle  = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},  
-  year = {2018},  
-  url = {http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/}
-}</code></pre>
+    @article{jia2014caffe,
+      Author = {Jia, Yangqing and Shelhamer, Evan and Donahue, Jeff and Karayev, Sergey and Long, Jonathan and Girshick, Ross and Guadarrama, Sergio and Darrell, Trevor},
+      Journal = {arXiv preprint arXiv:1408.5093},
+      Title = {Caffe: Convolutional Architecture for Fast Feature Embedding},
+      Year = {2014}
+    }
