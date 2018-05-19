@@ -5,7 +5,7 @@ This repository is the release of <strong>LiteFlowNet</strong> for our paper <st
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"> <strong>my project page</strong></a>.
 
-It comes as a fork of the modified caffe master branch from <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with new layers, scripts, and trained models.
+It comes as a fork of modified caffe master branches from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
 # Prerequisites
 Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
@@ -64,7 +64,8 @@ The trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflo
 
 4. Replace <code>MODEL</code> in line 10 of <code>./test_MODE.py</code> (<code>cnn_model = 'MODEL'</code>) to one of the trained models (e.g. <code>liteflownet</code>).
 
-5. <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results/YOUR_TESTING_SET</code></pre>
+5. Run the testing script. Flow fields (<code>MODEL</code>-0000000.flo, <code>MODEL</code>-0000001.flo, ... etc) are stored in the folder <code>/testing/results</code> having the same order as the image pair sequence. 
+<pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results</code></pre>
 
 # License and Citation	
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
