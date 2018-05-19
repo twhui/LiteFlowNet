@@ -38,7 +38,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ cd LiteFlowNet/data</code></pre>
 <pre><code>$ ./make-lmdbs-train.sh</code></pre>
 
-2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. NEW). Edit all the files and make sure all settings are correct.
+2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure all settings are correct.
 <pre><code>$ mkdir LiteFlowNet/models/NEW</code></pre>
 <pre><code>$ cd LiteFlowNet/models/NEW</code></pre>	
 <pre><code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code></pre>	
@@ -52,7 +52,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Trained models	
-The trained models (liteflownet-pre, liteflownet, liteflownet-ft-sintel, liteflownet-ft-kitti) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
+The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
 # Testing
 1. <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
