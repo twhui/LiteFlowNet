@@ -17,15 +17,14 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 
 2. Rename <code>cudnn.h</code> to <code>cudnn-5.1.h</code> in the folder <code>/cuda-8-cudnn-5.1/include</code>	
 
-3. <pre><code>sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code></pre>	
+3. <pre><code>$ sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code>	
+   <code>$ sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
 
-4. <pre><code>sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
-
-5. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>LiteFlowNet/include/caffe/util/cudnn.hpp</code>.
+4. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>LiteFlowNet/include/caffe/util/cudnn.hpp</code>.
     
 # Compiling
-<pre><code>$ cd LiteFlowNet</code></pre>
-<pre><code>$ make -j 8 all tools pycaffe</code></pre>
+<pre><code>$ cd LiteFlowNet</code>
+<code>$ make -j 8 all tools pycaffe</code></pre>
 
 # Datasets
 1. <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> (31GB) and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>.
@@ -35,15 +34,15 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 
 # Training
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
-<pre><code>$ cd LiteFlowNet/data</code></pre>
-<pre><code>$ ./make-lmdbs-train.sh</code></pre>
+<pre><code>$ cd LiteFlowNet/data</code>
+<code>$ ./make-lmdbs-train.sh</code></pre>
 
 2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure all settings are correct.
-<pre><code>$ mkdir LiteFlowNet/models/NEW</code></pre>
-<pre><code>$ cd LiteFlowNet/models/NEW</code></pre>	
-<pre><code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code></pre>	
-<pre><code>$ cp ../training_template/train.prototxt.template train.prototxt</code></pre>
-<pre><code>$ cp ../training_template/train.py.template train.py</code></pre>		
+<pre><code>$ mkdir LiteFlowNet/models/NEW</code>
+<code>$ cd LiteFlowNet/models/NEW</code>
+<code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code>	
+<code>$ cp ../training_template/train.prototxt.template train.prototxt</code>
+<code>$ cp ../training_template/train.py.template train.py</code></pre>		
 
 3. Create a soft link in your new model folder
 <pre><code>$ ln -s ../../build/tools bin</code></pre>
