@@ -1,5 +1,5 @@
 # LiteFlowNet
-This repository is the release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The most recent and improved results are presented in my <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv paper</strong></a></i>. 
+This repository is the release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The updated results are presented in my <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv paper</strong></a></i>. 
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
