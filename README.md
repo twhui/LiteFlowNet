@@ -1,9 +1,7 @@
-# This page is now under construction!</strong>
-
 # LiteFlowNet
-This repository is the release of <strong>LiteFlowNet</strong> for our paper <strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight).
+This repository is the release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The most recent and improved results are presented in my <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv paper</strong></a></i>. 
 
-For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"> <strong>my project page</strong></a>.
+For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
 It comes as a fork of modified caffe master branches from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
@@ -32,6 +30,32 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 3. <a href="http://files.is.tue.mpg.de/sintel/MPI-Sintel-complete.zip"> Sintel dataset (clean + final passes)</a> (5.3GB).
 4. <a href="http://www.cvlibs.net/download.php?file=data_stereo_flow.zip"> KITTI12 dataset</a> (2GB) and <a href="http://www.cvlibs.net/download.php?file=data_scene_flow.zip"> KITTI15 dataset</a> (2GB) (Simple registration is required).
 
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">FlyingChairs</th>
+<th align="center">FlyingThings3D</th>
+<th align="center">Sintel</th>
+<th align="center">KITTI</th>
+</tr>
+<tr>
+<td align="center">Crop size</td>
+<td align="center">448 x 320</td>
+<td align="center">768 x 384</td>
+<td align="center">768 x 384</td>
+<td align="center">896 x 320</td>
+</tr>  
+<tr>
+<td align="center">Batch size</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>    
+</tbody></table>
+
 # Training
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code>
@@ -54,7 +78,8 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
 # Testing
-1. <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
+1. Open the testing folder
+<pre><code>$ cd LiteFlowNet/models/testing</pre></code>
 
 2. Create a soft link in the folder <code>/testing</code>
 <pre><code>$ ln -s ../../build/tools bin</code></pre>
@@ -65,6 +90,11 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 
 5. Run the testing script. Flow fields (<code>MODEL</code>-0000000.flo, <code>MODEL</code>-0000001.flo, ... etc) are stored in the folder <code>/testing/results</code> having the same order as the image pair sequence. 
 <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results</code></pre>
+
+# Evaluation
+1. End-point error (EPE) per image can be calculated using the provided script <code>LiteFlowNet/models/testing/util/endPointErr.m</code>
+
+2. Average end-point error (AEE) is simply computed by taking the average of all EPE.
 
 # License and Citation	
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
