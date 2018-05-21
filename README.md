@@ -5,6 +5,17 @@ For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.e
 
 It comes as a fork of modified caffe master branches from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
+# License and Citation 
+All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
+
+<pre><code>@InProceedings{hui18liteflownet,    
+ author = {Tak-Wai Hui and Xiaoou Tang and Chen Change Loy},    
+ title = {LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation},    
+ booktitle  = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
+ year = {2018},    
+ url = {http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/} 
+}</code></pre>
+
 # Prerequisites
 Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
 
@@ -95,14 +106,3 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 1. End-point error (EPE) per image can be calculated using the provided script <code>LiteFlowNet/models/testing/util/endPointErr.m</code>
 
 2. Average end-point error (AEE) is simply computed by taking the average of all EPE.
-
-# License and Citation	
-All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If our work helps your research or you use the code in your research, please cite the following paper:
-
-<pre><code>@InProceedings{hui18liteflownet,  	
- author = {Tak-Wai Hui and Xiaoou Tang and Chen Change Loy},  	
- title = {LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation},  	
- booktitle  = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},  	
- year = {2018},  	
- url = {http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/}	
-}</code></pre>
