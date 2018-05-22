@@ -1,5 +1,5 @@
 # LiteFlowNet
-This repository is the release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The updated results are presented in my <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv paper</strong></a></i>. 
+This repository is the release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
@@ -18,6 +18,8 @@ All code is provided for research purposes only and without any warranty. Any co
 
 # Prerequisites
 Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
+
+Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
 
 For opencv 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/LiteFlowNet/src/caffe/layersresample_layer.cu</code>.
 
