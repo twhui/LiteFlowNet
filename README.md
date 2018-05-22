@@ -70,6 +70,8 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 </tbody></table>
 
 # Training
+(prototxt files will be available soon)
+
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code>
 <code>$ ./make-lmdbs-train.sh</code></pre>
@@ -90,7 +92,9 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 # Trained models	
 The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
-# Testing
+# Testing 
+(prototxt files will be available soon)
+
 1. Open the testing folder
 <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
 
