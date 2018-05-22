@@ -35,7 +35,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
     
 # Compiling
 <pre><code>$ cd LiteFlowNet</code>
-<code>$ make -j 8 all tools pycaffe</code></pre>
+<code>$ make -j 8 tools pycaffe</code></pre>
 
 # Datasets
 1. <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> (31GB) and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>.
