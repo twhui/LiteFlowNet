@@ -6,8 +6,8 @@ from math import ceil
 caffe_bin = 'bin/caffe.bin'
 img_size_bin = 'bin/get_image_size'
 
-template = './deploy.tpl.prototxt'
-cnn_model = 'MODEL'   # MODEL = liteflownet-pre, liteflownet, liteflownet-ft-sintel or liteflownet-ft-kitti
+template = './deploy.prototxt'
+cnn_model = 'MODEL'   # MODEL = liteflownet, liteflownet-ft-sintel or liteflownet-ft-kitti
 
 # =========================================================
 def get_image_size(filename):
