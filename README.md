@@ -69,6 +69,11 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 </tr>    
 </tbody></table>
 
+# Feature warping (f-warp) layer
+The source files are <code>/src/caffe/layerswarp_layer.cpp</code>, <code>/src/caffe/warp_layer.cu</code>, and <code>/include/caffe/layerswarp_layer.hpp</code>.
+
+# f-lcon layer
+
 # Training
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code>
