@@ -1,11 +1,9 @@
-# This page is still under construction!
-
 # LiteFlowNet
-This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for our paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
+This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for my paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
+
+It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
-
-It comes as a fork of modified caffe master branches from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
 # License and Citation 
 All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
@@ -19,11 +17,11 @@ All code and other materials (including but not limited to the paper, figures, a
 }</code></pre>
 
 # Prerequisites
-Installation was tested under Ubuntu 14.04.5 and 16.04.2 with CUDA 8.0 and cuDNN 5.1. 
+Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 and openCV 2.4.8/3.1.0. 
 
 Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
 
-For opencv 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/LiteFlowNet/src/caffe/layersresample_layer.cu</code>.
+For openCV 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/LiteFlowNet/src/caffe/layersresample_layer.cu</code>.
 
 If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
 1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>	
@@ -72,13 +70,11 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 </tbody></table>
 
 # Training
-(prototxt files will be available soon)
-
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code>
 <code>$ ./make-lmdbs-train.sh</code></pre>
 
-2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure all settings are correct.
+2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure the settings are correct for your application.
 <pre><code>$ mkdir LiteFlowNet/models/NEW</code>
 <code>$ cd LiteFlowNet/models/NEW</code>
 <code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code>	
@@ -95,8 +91,6 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
 
 # Testing 
-(prototxt files will be available soon)
-
 1. Open the testing folder
 <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
 
