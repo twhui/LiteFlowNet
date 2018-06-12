@@ -21,7 +21,7 @@ Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 an
 
 Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
 
-For openCV 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/LiteFlowNet/src/caffe/layersresample_layer.cu</code>.
+For openCV 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/src/caffe/layers/resample_layer.cu</code>.
 
 If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
 1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>	
@@ -31,7 +31,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 3. <pre><code>$ sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code>	
    <code>$ sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
 
-4. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>LiteFlowNet/include/caffe/util/cudnn.hpp</code>.
+4. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>/include/caffe/util/cudnn.hpp</code>.
     
 # Compiling
 <pre><code>$ cd LiteFlowNet</code>
@@ -76,11 +76,11 @@ The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/s
 It is implemented using off-the-shelf components. More details can be found in <code>/models/testing/depoly.prototxt</code> or <code>/models/training_template/train.prototxt.template</code> by locating the code segment <code>"NetE-R"</code>.
 
 # Training
-1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
+1. Prepare the training set. In <code>/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
 <pre><code>$ cd LiteFlowNet/data</code>
 <code>$ ./make-lmdbs-train.sh</code></pre>
 
-2. Copy files from <code>LiteFlowNet/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure the settings are correct for your application.
+2. Copy files from <code>/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure the settings are correct for your application.
 <pre><code>$ mkdir LiteFlowNet/models/NEW</code>
 <code>$ cd LiteFlowNet/models/NEW</code>
 <code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code>	
@@ -94,7 +94,7 @@ It is implemented using off-the-shelf components. More details can be found in <
 <pre><code>$ ./train.py -gpu 0 2>&1 | tee ./log.txt</code></pre>
 
 # Trained models	
-The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>LiteFlowNet/models/trained</code>. Untar the files to the same folder before you use it.
+The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>/models/trained</code>. Untar the files to the same folder before you use it.
 
 # Testing 
 1. Open the testing folder
@@ -111,6 +111,6 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results</code></pre>
 
 # Evaluation
-1. End-point error (EPE) per image can be calculated using the provided script <code>LiteFlowNet/models/testing/util/endPointErr.m</code>
+1. End-point error (EPE) per image can be calculated using the provided script <code>/models/testing/util/endPointErr.m</code>
 
 2. Average end-point error (AEE) is simply computed by taking the average of all EPE.
