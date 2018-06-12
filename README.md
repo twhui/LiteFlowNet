@@ -70,9 +70,10 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 </tbody></table>
 
 # Feature warping (f-warp) layer
-The source files are <code>/src/caffe/layerswarp_layer.cpp</code>, <code>/src/caffe/warp_layer.cu</code>, and <code>/include/caffe/layerswarp_layer.hpp</code>.
+The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/src/caffe/warp_layer.cu</code>, and <code>/include/caffe/layerswarp_layer.hpp</code>.
 
-# f-lcon layer
+# Feature-driven local convolution (f-lcon) layer
+It is implemented using off-the-shelf components. More details can be found in <code>/models/testing/depoly.prototxt</code> or <code>/models/training_template/train.prototxt.template</code> by locating the code segment <code>"NetE-R"</code>.
 
 # Training
 1. Prepare the training set. In <code>LiteFlowNet/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
