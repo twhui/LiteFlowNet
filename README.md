@@ -70,7 +70,7 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 </tbody></table>
 
 # Feature warping (f-warp) layer
-The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/src/caffe/warp_layer.cu</code>, and <code>/include/caffe/layerswarp_layer.hpp</code>.
+The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/src/caffe/layers/warp_layer.cu</code>, and <code>/include/caffe/layers/warp_layer.hpp</code>.
 
 # Feature-driven local convolution (f-lcon) layer
 It is implemented using off-the-shelf components. More details can be found in <code>/models/testing/depoly.prototxt</code> or <code>/models/training_template/train.prototxt.template</code> by locating the code segment <code>"NetE-R"</code>.
