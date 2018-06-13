@@ -73,7 +73,10 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/src/caffe/layers/warp_layer.cu</code>, and <code>/include/caffe/layers/warp_layer.hpp</code>.
 
 # Feature-driven local convolution (f-lcon) layer
-It is implemented using off-the-shelf components. More details can be found in <code>/models/testing/depoly.prototxt</code> or <code>/models/training_template/train.prototxt.template</code> by locating the code segment <code>"NetE-R"</code>.
+It is implemented using off-the-shelf components. More details can be found in <code>/models/testing/depoly.prototxt</code> or <code>/models/training_template/train.prototxt.template</code> by locating the code segment <code>NetE-R</code>.
+
+# Other layers
+Two custom layers (<code>ExpMax</code> and <code>NegSquare</code>) are optimized in speed for forward-pass.
 
 # Training
 1. Prepare the training set. In <code>/data/make-lmdbs-train.sh</code>, change <code>YOUR_TRAINING_SET</code> and <code>YOUR_TESTING_SET</code> to your favourite dataset.
@@ -103,7 +106,7 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 2. Create a soft link in the folder <code>/testing</code>
 <pre><code>$ ln -s ../../build/tools bin</code></pre>
 
-3. Replace <code>MODE</code> in <code>./test_MODE.py</code> to <code>batch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
+3. Replace <code>MODE</code> in <code>./test_MODE.py</code> to <code>b/atch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
 
 4. Replace <code>MODEL</code> in line 10 (<code>cnn_model = 'MODEL'</code>) of <code>test_MODE.py</code> to one of the trained models (e.g. <code>liteflownet-ft-sintel</code>).
 
