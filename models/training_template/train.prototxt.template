@@ -14,7 +14,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    # THIS IS ONLY AN EXAMPLE. CHANGE THE SETTINGS IT IF NECESSARY.
+    # THIS IS ONLY AN EXAMPLE. YOU CAN CHANGE THE SETTINGS, IF NECESSARY.
     source: "/path/to/data/YOUR_TRAINING_SET_lmdb"
     batch_size: 8
     backend: LMDB
@@ -41,7 +41,7 @@ layer {
     phase: TEST
   }
   data_param {
-    # THIS IS ONLY AN EXAMPLE. CHANGE THE SETTINGS IT IF NECESSARY.
+    # THIS IS ONLY AN EXAMPLE. YOU CAN CHANGE THE SETTINGS, IF NECESSARY.
     source: "/path/to/data/YOUR_TESTING_SET_lmdb"
     batch_size: 4
     backend: LMDB
