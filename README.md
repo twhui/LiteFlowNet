@@ -108,7 +108,7 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 2. Create a soft link in the folder <code>/testing</code>
 <pre><code>$ ln -s ../../build/tools bin</code></pre>
 
-3. Replace <code>MODE</code> in <code>./test_MODE.py</code> to <code>b/atch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
+3. Replace <code>MODE</code> in <code>./test_MODE.py</code> to <code>batch</code> if all the images has the same resolution (e.g. Sintel dataset), otherwise replace it to <code>iter</code> (e.g. KITTI dataset).
 
 4. Replace <code>MODEL</code> in line 10 (<code>cnn_model = 'MODEL'</code>) of <code>test_MODE.py</code> to one of the trained models (e.g. <code>liteflownet-ft-sintel</code>).
 
