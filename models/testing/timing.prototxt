@@ -1,0 +1,3586 @@
+#######################################
+#        LiteFlowNet CVPR 2018        #
+#                by                   #
+#           T.-W. Hui, CUHK           #
+#######################################
+layer {
+  name: "img0_nomean_resize"
+  type: "Input"
+  top: "img0_nomean_resize"
+  input_param { shape: { dim: 1 dim: 3 dim: 1024 dim: 448 } }
+}
+
+layer {
+  name: "img1_nomean_resize"
+  type: "Input"
+  top: "img1_nomean_resize"
+  input_param { shape: { dim: 1 dim: 3 dim: 1024 dim: 448 } }
+}
+
+#######################################
+#                NetC                 #
+#######################################
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "img0_nomean_resize"
+  bottom: "img1_nomean_resize"
+  top: "F0_L1"
+  top: "F1_L1"
+  convolution_param {
+    num_output: 32
+    pad: 3
+    kernel_size: 7
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1a"
+  type: "ReLU"
+  bottom: "F0_L1"
+  top: "F0_L1"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU1b"
+  type: "ReLU"
+  bottom: "F1_L1"
+  top: "F1_L1"
+  relu_param { negative_slope: 0.1 }
+}
+
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "F0_L1"
+  bottom: "F1_L1"
+  top: "F0_1_L2"
+  top: "F1_1_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 2
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2a_1"
+  type: "ReLU"
+  bottom: "F0_1_L2"
+  top: "F0_1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU2b_1"
+  type: "ReLU"
+  bottom: "F1_1_L2"
+  top: "F1_1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "F0_1_L2"
+  bottom: "F1_1_L2"
+  top: "F0_2_L2"
+  top: "F1_2_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2a_2"
+  type: "ReLU"
+  bottom: "F0_2_L2"
+  top: "F0_2_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU2b_2"
+  type: "ReLU"
+  bottom: "F1_2_L2"
+  top: "F1_2_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_3"
+  type: "Convolution"
+  bottom: "F0_2_L2"
+  bottom: "F1_2_L2"
+  top: "F0_L2"
+  top: "F1_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2a_3"
+  type: "ReLU"
+  bottom: "F0_L2"
+  top: "F0_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU2b_3"
+  type: "ReLU"
+  bottom: "F1_L2"
+  top: "F1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "F0_L2"
+  bottom: "F1_L2"
+  top: "F0_1_L3"
+  top: "F1_1_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 2
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3a_1"
+  type: "ReLU"
+  bottom: "F0_1_L3"
+  top: "F0_1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU3b_1"
+  type: "ReLU"
+  bottom: "F1_1_L3"
+  top: "F1_1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "F0_1_L3"
+  bottom: "F1_1_L3"
+  top: "F0_L3"
+  top: "F1_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3a_2"
+  type: "ReLU"
+  bottom: "F0_L3"
+  top: "F0_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU3b_2"
+  type: "ReLU"
+  bottom: "F1_L3"
+  top: "F1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "F0_L3"
+  bottom: "F1_L3"
+  top: "F0_1_L4"
+  top: "F1_1_L4"
+  convolution_param {
+    num_output: 96
+    pad: 1
+    kernel_size: 3
+    stride: 2
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU4a_1"
+  type: "ReLU"
+  bottom: "F0_1_L4"
+  top: "F0_1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU4b_1"
+  type: "ReLU"
+  bottom: "F1_1_L4"
+  top: "F1_1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "F0_1_L4"
+  bottom: "F1_1_L4"
+  top: "F0_L4"
+  top: "F1_L4"
+  convolution_param {
+    num_output: 96
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU4a_2"
+  type: "ReLU"
+  bottom: "F0_L4"
+  top: "F0_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU4b_2"
+  type: "ReLU"
+  bottom: "F1_L4"
+  top: "F1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5"
+  type: "Convolution"
+  bottom: "F0_L4"
+  bottom: "F1_L4"
+  top: "F0_L5"
+  top: "F1_L5"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 2
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU5a"
+  type: "ReLU"
+  bottom: "F0_L5"
+  top: "F0_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU5b"
+  type: "ReLU"
+  bottom: "F1_L5"
+  top: "F1_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6"
+  type: "Convolution"
+  bottom: "F0_L5"
+  bottom: "F1_L5"
+  top: "F0_L6"
+  top: "F1_L6"
+  convolution_param {
+    num_output: 192
+    pad: 1
+    kernel_size: 3
+    stride: 2
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU6a"
+  type: "ReLU"
+  bottom: "F0_L6"
+  top: "F0_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "ReLU6b"
+  type: "ReLU"
+  bottom: "F1_L6"
+  top: "F1_L6"
+  relu_param { negative_slope: 0.1 }
+}
+
+#######################################
+#         Downsample images           #
+#######################################
+layer {
+  name: "Downsample_img0_aug_L2"
+  type: "Downsample"
+  bottom: "img0_nomean_resize"
+  bottom: "F0_L2"
+  top: "img0_aug_L2"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img1_aug_L2"
+  type: "Downsample"
+  bottom: "img1_nomean_resize"
+  bottom: "F1_L2"
+  top: "img1_aug_L2"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img0_aug_L3"
+  type: "Downsample"
+  bottom: "img0_nomean_resize"
+  bottom: "F0_L3"
+  top: "img0_aug_L3"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img1_aug_L3"
+  type: "Downsample"
+  bottom: "img1_nomean_resize"
+  bottom: "F1_L3"
+  top: "img1_aug_L3"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img0_aug_L4"
+  type: "Downsample"
+  bottom: "img0_nomean_resize"
+  bottom: "F0_L4"
+  top: "img0_aug_L4"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img1_aug_L4"
+  type: "Downsample"
+  bottom: "img1_nomean_resize"
+  bottom: "F1_L4"
+  top: "img1_aug_L4"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img0_aug_L5"
+  type: "Downsample"
+  bottom: "img0_aug_L4"
+  bottom: "F0_L5"
+  top: "img0_aug_L5"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img1_aug_L5"
+  type: "Downsample"
+  bottom: "img1_aug_L4"
+  bottom: "F1_L5"
+  top: "img1_aug_L5"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img0_aug_L6"
+  type: "Downsample"
+  bottom: "img0_aug_L4"
+  bottom: "F0_L6"
+  top: "img0_aug_L6"
+  propagate_down: false
+  propagate_down: false
+}
+layer {
+  name: "Downsample_img1_aug_L6"
+  type: "Downsample"
+  bottom: "img1_aug_L4"
+  bottom: "F1_L6"
+  top: "img1_aug_L6"
+  propagate_down: false
+  propagate_down: false
+}
+#######################################
+#             NetE-M: L6              #
+#######################################
+layer {
+  name: "corr_L6"
+  type: "Correlation"
+  bottom: "F0_L6"
+  bottom: "F1_L6"
+  top: "corr_L6"
+  correlation_param {
+    pad: 3
+    kernel_size: 1
+    max_displacement: 3
+    stride_1: 1
+    stride_2: 1
+  }
+}
+layer {
+  name: "ReLU_corr_L6"
+  type: "ReLU"
+  bottom: "corr_L6"
+  top: "corr_L6"
+  relu_param {
+    negative_slope: 0.1
+  }
+}
+layer {
+  name: "conv1_D1_L6"
+  type: "Convolution"
+  bottom: "corr_L6"
+  top: "conv1_D1_L6"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D1_L6"
+  type: "ReLU"
+  bottom: "conv1_D1_L6"
+  top: "conv1_D1_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D1_L6"
+  type: "Convolution"
+  bottom: "conv1_D1_L6"
+  top: "conv2_D1_L6"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D1_L6"
+  type: "ReLU"
+  bottom: "conv2_D1_L6"
+  top: "conv2_D1_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D1_L6"
+  type: "Convolution"
+  bottom: "conv2_D1_L6"
+  top: "conv3_D1_L6"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D1_L6"
+  type: "ReLU"
+  bottom: "conv3_D1_L6"
+  top: "conv3_D1_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D1_L6"
+  type: "Convolution"
+  bottom: "conv3_D1_L6"
+  top: "scaled_flow_D1_L6"
+  convolution_param {
+    num_output: 2
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+#######################################
+#             NetE-S: L6              #
+#######################################
+layer {
+  name: "FlowUnscaling_L6_D2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L6"
+  top: "flow_D1_L6"
+  eltwise_param {
+    operation: SUM
+    coeff: 0.625
+  }
+}
+layer {
+   name: "gxy_L6"
+   type: "Grid"
+   top: "gxy_L6"
+   bottom: "flow_D1_L6"
+   propagate_down: false
+}
+layer {
+  name: "coords_D1_L6"
+  type: "Eltwise"
+  bottom: "flow_D1_L6"
+  bottom: "gxy_L6"
+  top: "coords_D1_L6"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_F1_L6"
+  type: "Warp"
+  bottom: "F1_L6"
+  bottom: "coords_D1_L6"
+  top: "warped_D1_F1_L6"
+}
+layer {
+  name: "F_D2_L6"
+  bottom: "F0_L6"
+  bottom: "warped_D1_F1_L6"
+  bottom: "scaled_flow_D1_L6"
+  top: "F_D2_L6"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_D2_L6"
+  type: "Convolution"
+  bottom: "F_D2_L6"
+  top: "conv1_D2_L6"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D2_L6"
+  type: "ReLU"
+  bottom: "conv1_D2_L6"
+  top: "conv1_D2_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D2_L6"
+  type: "Convolution"
+  bottom: "conv1_D2_L6"
+  top: "conv2_D2_L6"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D2_L6"
+  type: "ReLU"
+  bottom: "conv2_D2_L6"
+  top: "conv2_D2_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D2_L6"
+  type: "Convolution"
+  bottom: "conv2_D2_L6"
+  top: "conv3_D2_L6"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D2_L6"
+  type: "ReLU"
+  bottom: "conv3_D2_L6"
+  top: "conv3_D2_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D2_res_L6"
+  type: "Convolution"
+  bottom: "conv3_D2_L6"
+  top: "scaled_flow_D2_res_L6"
+  convolution_param {
+    num_output: 2
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D2_L6"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L6"
+  bottom: "scaled_flow_D2_res_L6"
+  top: "scaled_flow_D2_L6"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-R: L6              #
+#######################################
+layer {
+  name: "slice_scaled_flow_D_L6"
+  type: "Slice"
+  bottom: "scaled_flow_D2_L6"
+  top: "scaled_flow_D_L6_x"
+  top: "scaled_flow_D_L6_y"
+  slice_param { axis: 1 slice_point: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L6_x"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L6_x"
+  top: "reshaped_scaled_flow_D_L6_x"
+  convolution_param { pad: 1 kernel_size: 3 stride: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L6_y"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L6_y"
+  top: "reshaped_scaled_flow_D_L6_y"
+  convolution_param { pad: 1 kernel_size: 3 stride: 1 }
+}
+layer {
+  name: "mean_scaled_flow_D_L6_x"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L6_x"
+  top: "mean_scaled_flow_D_L6_x"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L6_x"
+  type: "Bias"
+  bottom: "scaled_flow_D_L6_x"
+  bottom: "mean_scaled_flow_D_L6_x"
+  top: "scaled_flow_D_nomean_L6_x"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "mean_scaled_flow_D_L6_y"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L6_y"
+  top: "mean_scaled_flow_D_L6_y"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L6_y"
+  type: "Bias"
+  bottom: "scaled_flow_D_L6_y"
+  bottom: "mean_scaled_flow_D_L6_y"
+  top: "scaled_flow_D_nomean_L6_y"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "FlowUnscaling_L6_R"
+  type: "Eltwise"
+  bottom: "scaled_flow_D2_L6"
+  top: "flow_D2_L6"
+  eltwise_param {
+    operation: SUM
+    coeff: 0.625
+  }
+}
+layer {
+  name: "coords_R_L6"
+  type: "Eltwise"
+  bottom: "flow_D2_L6"
+  bottom: "gxy_L6"
+  top: "coords_R_L6"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_img1_aug_L6"
+  type: "Warp"
+  bottom: "img1_aug_L6"
+  bottom: "coords_R_L6"
+  top: "warped_img1_aug_L6"
+}
+layer {
+  name: "img_diff_L6"
+  type: "Eltwise"
+  bottom: "img0_aug_L6"
+  bottom: "warped_img1_aug_L6"
+  top: "img_diff_L6"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.0
+    coeff: -1.0
+  }
+}
+layer {
+  name: "channelNorm_L6"
+  type: "ChannelNorm"
+  bottom: "img_diff_L6"
+  top: "channelNorm_L6"
+}
+layer {
+  name: "concat_F0_R_L6"
+  type: "Concat"
+  bottom: "channelNorm_L6"
+  bottom: "scaled_flow_D_nomean_L6_x"
+  bottom: "scaled_flow_D_nomean_L6_y"
+  bottom: "F0_L6"
+  top: "concat_F0_R_L6"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_R_L6"
+  type: "Convolution"
+  bottom: "concat_F0_R_L6"
+  top: "conv1_R_L6"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv1_R_L6"
+  type: "ReLU"
+  bottom: "conv1_R_L6"
+  top: "conv1_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_R_L6"
+  type: "Convolution"
+  bottom: "conv1_R_L6"
+  top: "conv2_R_L6"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv2_R_L6"
+  type: "ReLU"
+  bottom: "conv2_R_L6"
+  top: "conv2_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_R_L6"
+  type: "Convolution"
+  bottom: "conv2_R_L6"
+  top: "conv3_R_L6"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv3_R_L6"
+  type: "ReLU"
+  bottom: "conv3_R_L6"
+  top: "conv3_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_R_L6"
+  type: "Convolution"
+  bottom: "conv3_R_L6"
+  top: "conv4_R_L6"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv4_R_L6"
+  type: "ReLU"
+  bottom: "conv4_R_L6"
+  top: "conv4_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5_R_L6"
+  type: "Convolution"
+  bottom: "conv4_R_L6"
+  top: "conv5_R_L6"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv5_R_L6"
+  type: "ReLU"
+  bottom: "conv5_R_L6"
+  top: "conv5_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6_R_L6"
+  type: "Convolution"
+  bottom: "conv5_R_L6"
+  top: "conv6_R_L6"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv6_R_L6"
+  type: "ReLU"
+  bottom: "conv6_R_L6"
+  top: "conv6_R_L6"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "dist_R_L6"
+  type: "Convolution"
+  bottom: "conv6_R_L6"
+  top: "dist_R_L6"
+  convolution_param {
+    num_output: 9
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "neg_sq_dist_R_L6"
+  type: "NegSquare"
+  bottom: "dist_R_L6"
+  top: "neg_sq_dist_R_L6"
+}
+layer {
+  name: "exp_kernel_R_L6"
+  type: "ExpMax"
+  bottom: "neg_sq_dist_R_L6"
+  top: "exp_kernel_R_L6"
+}
+layer {
+  name: "sum_exp_kernel_R_L6"
+  type: "Convolution"
+  bottom: "exp_kernel_R_L6"
+  top: "sum_exp_kernel_R_L6"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "divisor_R_L6"
+  bottom: "sum_exp_kernel_R_L6"
+  top: "divisor_R_L6"
+  type: "Power"
+  power_param { power: -1 scale: 1 shift: 0 }
+}
+layer {
+  name: "f-lconv_L6_x"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L6_x"
+  bottom: "exp_kernel_R_L6"
+  top: "f-lconv_L6_x"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L6_x"
+  type: "Convolution"
+  bottom: "f-lconv_L6_x"
+  top: "scaled_flow0_R_L6_x"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L6_x"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L6_x"
+  bottom: "divisor_R_L6"
+  top: "scaled_flow1_R_L6_x"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "f-lconv_L6_y"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L6_y"
+  bottom: "exp_kernel_R_L6"
+  top: "f-lconv_L6_y"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L6_y"
+  type: "Convolution"
+  bottom: "f-lconv_L6_y"
+  top: "scaled_flow0_R_L6_y"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L6_y"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L6_y"
+  bottom: "divisor_R_L6"
+  top: "scaled_flow1_R_L6_y"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "scaled_flow_R_L6"
+  bottom: "scaled_flow1_R_L6_x"
+  bottom: "scaled_flow1_R_L6_y"
+  top: "scaled_flow_R_L6"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+#######################################
+#            NetE-M: L5               #
+#######################################
+layer {
+  name: "scaled_flow_R_L6to5"
+  type: "Deconvolution"
+  bottom: "scaled_flow_R_L6"
+  top: "scaled_flow_R_L6to5"
+  convolution_param {
+    num_output: 2
+    group: 2
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "FlowUnscaling_L5_D1"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L6to5"
+  top: "flow_R_L6to5"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.25
+  }
+}
+layer {
+   name: "gxy_L5"
+   type: "Grid"
+   top: "gxy_L5"
+   bottom: "flow_R_L6to5"
+   propagate_down: false
+}
+layer {
+  name: "coords_L5"
+  type: "Eltwise"
+  bottom: "flow_R_L6to5"
+  bottom: "gxy_L5"
+  top: "coords_L5"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_F1_L5"
+  type: "Warp"
+  bottom: "F1_L5"
+  bottom: "coords_L5"
+  top: "warped_F1_L5"
+}
+layer {
+  name: "corr_L5"
+  type: "Correlation"
+  bottom: "F0_L5"
+  bottom: "warped_F1_L5"
+  top: "corr_L5"
+  correlation_param {
+    pad: 3
+    kernel_size: 1
+    max_displacement: 3
+    stride_1: 1
+    stride_2: 1
+  }
+}
+layer {
+  name: "ReLU_corr_L5"
+  type: "ReLU"
+  bottom: "corr_L5"
+  top: "corr_L5"
+  relu_param {
+    negative_slope: 0.1
+  }
+}
+layer {
+  name: "conv1_D1_L5"
+  type: "Convolution"
+  bottom: "corr_L5"
+  top: "conv1_D1_L5"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D1_L5"
+  type: "ReLU"
+  bottom: "conv1_D1_L5"
+  top: "conv1_D1_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D1_L5"
+  type: "Convolution"
+  bottom: "conv1_D1_L5"
+  top: "conv2_D1_L5"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D1_L5"
+  type: "ReLU"
+  bottom: "conv2_D1_L5"
+  top: "conv2_D1_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D1_L5"
+  type: "Convolution"
+  bottom: "conv2_D1_L5"
+  top: "conv3_D1_L5"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D1_L5"
+  type: "ReLU"
+  bottom: "conv3_D1_L5"
+  top: "conv3_D1_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D1_res_L5"
+  type: "Convolution"
+  bottom: "conv3_D1_L5"
+  top: "scaled_flow_D1_res_L5"
+  convolution_param {
+    num_output: 2
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D1_L5"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L6to5"
+  bottom: "scaled_flow_D1_res_L5"
+  top: "scaled_flow_D1_L5"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-S: L5              #
+#######################################
+layer {
+  name: "FlowUnscaling_L5_D2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L5"
+  top: "flow_D1_L5"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.25
+  }
+}
+layer {
+  name: "coords_D1_L5"
+  type: "Eltwise"
+  bottom: "flow_D1_L5"
+  bottom: "gxy_L5"
+  top: "coords_D1_L5"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_D1_F1_L5"
+  type: "Warp"
+  bottom: "F1_L5"
+  bottom: "coords_D1_L5"
+  top: "warped_D1_F1_L5"
+}
+layer {
+  name: "F_D2_L5"
+  bottom: "F0_L5"
+  bottom: "warped_D1_F1_L5"
+  bottom: "scaled_flow_D1_L5"
+  top: "F_D2_L5"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_D2_L5"
+  type: "Convolution"
+  bottom: "F_D2_L5"
+  top: "conv1_D2_L5"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D2_L5"
+  type: "ReLU"
+  bottom: "conv1_D2_L5"
+  top: "conv1_D2_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D2_L5"
+  type: "Convolution"
+  bottom: "conv1_D2_L5"
+  top: "conv2_D2_L5"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D2_L5"
+  type: "ReLU"
+  bottom: "conv2_D2_L5"
+  top: "conv2_D2_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D2_L5"
+  type: "Convolution"
+  bottom: "conv2_D2_L5"
+  top: "conv3_D2_L5"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D2_L5"
+  type: "ReLU"
+  bottom: "conv3_D2_L5"
+  top: "conv3_D2_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D2_res_L5"
+  type: "Convolution"
+  bottom: "conv3_D2_L5"
+  top: "scaled_flow_D2_res_L5"
+  convolution_param {
+    num_output: 2
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D2_L5"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L5"
+  bottom: "scaled_flow_D2_res_L5"
+  top: "scaled_flow_D2_L5"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-R: L5              #
+#######################################
+layer {
+  name: "slice_scaled_flow_D_L5"
+  type: "Slice"
+  bottom: "scaled_flow_D2_L5"
+  top: "scaled_flow_D_L5_x"
+  top: "scaled_flow_D_L5_y"
+  slice_param { axis: 1 slice_point: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L5_x"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L5_x"
+  top: "reshaped_scaled_flow_D_L5_x"
+  convolution_param { pad: 1 kernel_size: 3 stride: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L5_y"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L5_y"
+  top: "reshaped_scaled_flow_D_L5_y"
+  convolution_param { pad: 1 kernel_size: 3 stride: 1 }
+}
+layer {
+  name: "mean_scaled_flow_D_L5_x"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L5_x"
+  top: "mean_scaled_flow_D_L5_x"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L5_x"
+  type: "Bias"
+  bottom: "scaled_flow_D_L5_x"
+  bottom: "mean_scaled_flow_D_L5_x"
+  top: "scaled_flow_D_nomean_L5_x"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "mean_scaled_flow_D_L5_y"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L5_y"
+  top: "mean_scaled_flow_D_L5_y"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L5_y"
+  type: "Bias"
+  bottom: "scaled_flow_D_L5_y"
+  bottom: "mean_scaled_flow_D_L5_y"
+  top: "scaled_flow_D_nomean_L5_y"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "FlowUnscaling_L5_R"
+  type: "Eltwise"
+  bottom: "scaled_flow_D2_L5"
+  top: "flow_D2_L5"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.25
+  }
+}
+layer {
+  name: "coords_R_L5"
+  type: "Eltwise"
+  bottom: "flow_D2_L5"
+  bottom: "gxy_L5"
+  top: "coords_R_L5"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_img1_aug_L5"
+  type: "Warp"
+  bottom: "img1_aug_L5"
+  bottom: "coords_R_L5"
+  top: "warped_img1_aug_L5"
+}
+layer {
+  name: "img_diff_L5"
+  type: "Eltwise"
+  bottom: "img0_aug_L5"
+  bottom: "warped_img1_aug_L5"
+  top: "img_diff_L5"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.0
+    coeff: -1.0
+  }
+}
+layer {
+  name: "channelNorm_L5"
+  type: "ChannelNorm"
+  bottom: "img_diff_L5"
+  top: "channelNorm_L5"
+}
+layer {
+  name: "concat_F0_R_L5"
+  type: "Concat"
+  bottom: "channelNorm_L5"
+  bottom: "scaled_flow_D_nomean_L5_x"
+  bottom: "scaled_flow_D_nomean_L5_y"
+  bottom: "F0_L5"
+  top: "concat_F0_R_L5"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_R_L5"
+  type: "Convolution"
+  bottom: "concat_F0_R_L5"
+  top: "conv1_R_L5"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv1_R_L5"
+  type: "ReLU"
+  bottom: "conv1_R_L5"
+  top: "conv1_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_R_L5"
+  type: "Convolution"
+  bottom: "conv1_R_L5"
+  top: "conv2_R_L5"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv2_R_L5"
+  type: "ReLU"
+  bottom: "conv2_R_L5"
+  top: "conv2_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_R_L5"
+  type: "Convolution"
+  bottom: "conv2_R_L5"
+  top: "conv3_R_L5"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv3_R_L5"
+  type: "ReLU"
+  bottom: "conv3_R_L5"
+  top: "conv3_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_R_L5"
+  type: "Convolution"
+  bottom: "conv3_R_L5"
+  top: "conv4_R_L5"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv4_R_L5"
+  type: "ReLU"
+  bottom: "conv4_R_L5"
+  top: "conv4_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5_R_L5"
+  type: "Convolution"
+  bottom: "conv4_R_L5"
+  top: "conv5_R_L5"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv5_R_L5"
+  type: "ReLU"
+  bottom: "conv5_R_L5"
+  top: "conv5_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6_R_L5"
+  type: "Convolution"
+  bottom: "conv5_R_L5"
+  top: "conv6_R_L5"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv6_R_L5"
+  type: "ReLU"
+  bottom: "conv6_R_L5"
+  top: "conv6_R_L5"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "dist_R_L5"
+  type: "Convolution"
+  bottom: "conv6_R_L5"
+  top: "dist_R_L5"
+  convolution_param {
+    num_output: 9
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "neg_sq_dist_R_L5"
+  type: "NegSquare"
+  bottom: "dist_R_L5"
+  top: "neg_sq_dist_R_L5"
+}
+layer {
+  name: "exp_kernel_R_L5"
+  type: "ExpMax"
+  bottom: "neg_sq_dist_R_L5"
+  top: "exp_kernel_R_L5"
+}
+layer {
+  name: "sum_exp_kernel_R_L5"
+  type: "Convolution"
+  bottom: "exp_kernel_R_L5"
+  top: "sum_exp_kernel_R_L5"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "divisor_R_L5"
+  bottom: "sum_exp_kernel_R_L5"
+  top: "divisor_R_L5"
+  type: "Power"
+  power_param { power: -1 scale: 1 shift: 0 }
+}
+layer {
+  name: "f-lconv_L5_x"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L5_x"
+  bottom: "exp_kernel_R_L5"
+  top: "f-lconv_L5_x"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L5_x"
+  type: "Convolution"
+  bottom: "f-lconv_L5_x"
+  top: "scaled_flow0_R_L5_x"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L5_x"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L5_x"
+  bottom: "divisor_R_L5"
+  top: "scaled_flow1_R_L5_x"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "f-lconv_L5_y"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L5_y"
+  bottom: "exp_kernel_R_L5"
+  top: "f-lconv_L5_y"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L5_y"
+  type: "Convolution"
+  bottom: "f-lconv_L5_y"
+  top: "scaled_flow0_R_L5_y"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L5_y"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L5_y"
+  bottom: "divisor_R_L5"
+  top: "scaled_flow1_R_L5_y"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "scaled_flow_R_L5"
+  bottom: "scaled_flow1_R_L5_x"
+  bottom: "scaled_flow1_R_L5_y"
+  top: "scaled_flow_R_L5"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+#######################################
+#             NetE-M: L4              #
+#######################################
+layer {
+  name: "scaled_flow_R_L5to4"
+  type: "Deconvolution"
+  bottom: "scaled_flow_R_L5"
+  top: "scaled_flow_R_L5to4"
+  convolution_param {
+    num_output: 2
+    group: 2
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "FlowUnscaling_L4_D1"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L5to4"
+  top: "flow_R_L5to4"
+  eltwise_param {
+    operation: SUM
+    coeff: 2.5
+  }
+}
+layer {
+   name: "gxy_L4"
+   type: "Grid"
+   top: "gxy_L4"
+   bottom: "flow_R_L5to4"
+   propagate_down: false
+}
+layer {
+  name: "coords_L4"
+  type: "Eltwise"
+  bottom: "flow_R_L5to4"
+  bottom: "gxy_L4"
+  top: "coords_L4"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_F1_L4"
+  type: "Warp"
+  bottom: "F1_L4"
+  bottom: "coords_L4"
+  top: "warped_F1_L4"
+}
+layer {
+  name: "corr_L4"
+  type: "Correlation"
+  bottom: "F0_L4"
+  bottom: "warped_F1_L4"
+  top: "corr_L4"
+  correlation_param {
+    pad: 3
+    kernel_size: 1
+    max_displacement: 3
+    stride_1: 1
+    stride_2: 1
+  }
+}
+layer {
+  name: "ReLU_corr_L4"
+  type: "ReLU"
+  bottom: "corr_L4"
+  top: "corr_L4"
+  relu_param {
+    negative_slope: 0.1
+  }
+}
+layer {
+  name: "conv1_D1_L4"
+  type: "Convolution"
+  bottom: "corr_L4"
+  top: "conv1_D1_L4"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D1_L4"
+  type: "ReLU"
+  bottom: "conv1_D1_L4"
+  top: "conv1_D1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D1_L4"
+  type: "Convolution"
+  bottom: "conv1_D1_L4"
+  top: "conv2_D1_L4"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D1_L4"
+  type: "ReLU"
+  bottom: "conv2_D1_L4"
+  top: "conv2_D1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D1_L4"
+  type: "Convolution"
+  bottom: "conv2_D1_L4"
+  top: "conv3_D1_L4"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D1_L4"
+  type: "ReLU"
+  bottom: "conv3_D1_L4"
+  top: "conv3_D1_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D1_res_L4"
+  type: "Convolution"
+  bottom: "conv3_D1_L4"
+  top: "scaled_flow_D1_res_L4"
+  convolution_param {
+    num_output: 2
+    pad: 2
+    kernel_size: 5
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D1_L4"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L5to4"
+  bottom: "scaled_flow_D1_res_L4"
+  top: "scaled_flow_D1_L4"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-S: L4              #
+#######################################
+layer {
+  name: "FlowUnscaling_L4_D2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L4"
+  top: "flow_D1_L4"
+  eltwise_param {
+    operation: SUM
+    coeff: 2.5
+  }
+}
+layer {
+  name: "coords_D1_L4"
+  type: "Eltwise"
+  bottom: "flow_D1_L4"
+  bottom: "gxy_L4"
+  top: "coords_D1_L4"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_D1_F1_L4"
+  type: "Warp"
+  bottom: "F1_L4"
+  bottom: "coords_D1_L4"
+  top: "warped_D1_F1_L4"
+}
+layer {
+  name: "F_D2_L4"
+  bottom: "F0_L4"
+  bottom: "warped_D1_F1_L4"
+  bottom: "scaled_flow_D1_L4"
+  top: "F_D2_L4"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_D2_L4"
+  type: "Convolution"
+  bottom: "F_D2_L4"
+  top: "conv1_D2_L4"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D2_L4"
+  type: "ReLU"
+  bottom: "conv1_D2_L4"
+  top: "conv1_D2_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D2_L4"
+  type: "Convolution"
+  bottom: "conv1_D2_L4"
+  top: "conv2_D2_L4"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D2_L4"
+  type: "ReLU"
+  bottom: "conv2_D2_L4"
+  top: "conv2_D2_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D2_L4"
+  type: "Convolution"
+  bottom: "conv2_D2_L4"
+  top: "conv3_D2_L4"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D2_L4"
+  type: "ReLU"
+  bottom: "conv3_D2_L4"
+  top: "conv3_D2_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D2_res_L4"
+  type: "Convolution"
+  bottom: "conv3_D2_L4"
+  top: "scaled_flow_D2_res_L4"
+  convolution_param {
+    num_output: 2
+    pad: 2
+    kernel_size: 5
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D2_L4"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L4"
+  bottom: "scaled_flow_D2_res_L4"
+  top: "scaled_flow_D2_L4"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-R: L4              #
+#######################################
+layer {
+  name: "slice_scaled_flow_D_L4"
+  type: "Slice"
+  bottom: "scaled_flow_D2_L4"
+  top: "scaled_flow_D_L4_x"
+  top: "scaled_flow_D_L4_y"
+  slice_param { axis: 1 slice_point: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L4_x"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L4_x"
+  top: "reshaped_scaled_flow_D_L4_x"
+  convolution_param { pad: 2 kernel_size: 5 stride: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L4_y"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L4_y"
+  top: "reshaped_scaled_flow_D_L4_y"
+  convolution_param { pad: 2 kernel_size: 5 stride: 1 }
+}
+layer {
+  name: "mean_scaled_flow_D_L4_x"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L4_x"
+  top: "mean_scaled_flow_D_L4_x"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L4_x"
+  type: "Bias"
+  bottom: "scaled_flow_D_L4_x"
+  bottom: "mean_scaled_flow_D_L4_x"
+  top: "scaled_flow_D_nomean_L4_x"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "mean_scaled_flow_D_L4_y"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L4_y"
+  top: "mean_scaled_flow_D_L4_y"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L4_y"
+  type: "Bias"
+  bottom: "scaled_flow_D_L4_y"
+  bottom: "mean_scaled_flow_D_L4_y"
+  top: "scaled_flow_D_nomean_L4_y"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "FlowUnscaling_L4_R"
+  type: "Eltwise"
+  bottom: "scaled_flow_D2_L4"
+  top: "flow_D2_L4"
+  eltwise_param {
+    operation: SUM
+    coeff: 2.5
+  }
+}
+layer {
+  name: "coords_R_L4"
+  type: "Eltwise"
+  bottom: "flow_D2_L4"
+  bottom: "gxy_L4"
+  top: "coords_R_L4"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_img1_aug_L4"
+  type: "Warp"
+  bottom: "img1_aug_L4"
+  bottom: "coords_R_L4"
+  top: "warped_img1_aug_L4"
+}
+layer {
+  name: "img_diff_L4"
+  type: "Eltwise"
+  bottom: "img0_aug_L4"
+  bottom: "warped_img1_aug_L4"
+  top: "img_diff_L4"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.0
+    coeff: -1.0
+  }
+}
+layer {
+  name: "channelNorm_L4"
+  type: "ChannelNorm"
+  bottom: "img_diff_L4"
+  top: "channelNorm_L4"
+}
+layer {
+  name: "F0_128_L4"
+  type: "Convolution"
+  bottom: "F0_L4"
+  top: "F0_128_L4"
+  convolution_param {
+    num_output: 128
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_F0_128_L4"
+  type: "ReLU"
+  bottom: "F0_128_L4"
+  top: "F0_128_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "concat_F0_R_L4"
+  type: "Concat"
+  bottom: "channelNorm_L4"
+  bottom: "scaled_flow_D_nomean_L4_x"
+  bottom: "scaled_flow_D_nomean_L4_y"
+  bottom: "F0_128_L4"
+  top: "concat_F0_R_L4"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_R_L4"
+  type: "Convolution"
+  bottom: "concat_F0_R_L4"
+  top: "conv1_R_L4"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv1_R_L4"
+  type: "ReLU"
+  bottom: "conv1_R_L4"
+  top: "conv1_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_R_L4"
+  type: "Convolution"
+  bottom: "conv1_R_L4"
+  top: "conv2_R_L4"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv2_R_L4"
+  type: "ReLU"
+  bottom: "conv2_R_L4"
+  top: "conv2_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_R_L4"
+  type: "Convolution"
+  bottom: "conv2_R_L4"
+  top: "conv3_R_L4"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv3_R_L4"
+  type: "ReLU"
+  bottom: "conv3_R_L4"
+  top: "conv3_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_R_L4"
+  type: "Convolution"
+  bottom: "conv3_R_L4"
+  top: "conv4_R_L4"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv4_R_L4"
+  type: "ReLU"
+  bottom: "conv4_R_L4"
+  top: "conv4_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5_R_L4"
+  type: "Convolution"
+  bottom: "conv4_R_L4"
+  top: "conv5_R_L4"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv5_R_L4"
+  type: "ReLU"
+  bottom: "conv5_R_L4"
+  top: "conv5_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6_R_L4"
+  type: "Convolution"
+  bottom: "conv5_R_L4"
+  top: "conv6_R_L4"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv6_R_L4"
+  type: "ReLU"
+  bottom: "conv6_R_L4"
+  top: "conv6_R_L4"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "distH_R_L4"
+  type: "Convolution"
+  bottom: "conv6_R_L4"
+  top: "distH_R_L4"
+  convolution_param {
+    num_output: 25
+    pad_h: 2
+    kernel_h: 5
+    stride_h: 1
+    pad_w: 0
+    kernel_w: 1
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "distW_R_L4"
+  type: "Convolution"
+  bottom: "distH_R_L4"
+  top: "distW_R_L4"
+  convolution_param {
+    num_output: 25
+    pad_h: 0
+    kernel_h: 1
+    stride_h: 1
+    pad_w: 2
+    kernel_w: 5
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "neg_sq_dist_R_L4"
+  type: "NegSquare"
+  bottom: "distW_R_L4"
+  top: "neg_sq_dist_R_L4"
+}
+layer {
+  name: "exp_kernel_R_L4"
+  type: "ExpMax"
+  bottom: "neg_sq_dist_R_L4"
+  top: "exp_kernel_R_L4"
+}
+layer {
+  name: "sum_exp_kernel_R_L4"
+  type: "Convolution"
+  bottom: "exp_kernel_R_L4"
+  top: "sum_exp_kernel_R_L4"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "divisor_R_L4"
+  bottom: "sum_exp_kernel_R_L4"
+  top: "divisor_R_L4"
+  type: "Power"
+  power_param { power: -1 scale: 1 shift: 0 }
+}
+layer {
+  name: "f-lconv_L4_x"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L4_x"
+  bottom: "exp_kernel_R_L4"
+  top: "f-lconv_L4_x"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L4_x"
+  type: "Convolution"
+  bottom: "f-lconv_L4_x"
+  top: "scaled_flow0_R_L4_x"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L4_x"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L4_x"
+  bottom: "divisor_R_L4"
+  top: "scaled_flow1_R_L4_x"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "f-lconv_L4_y"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L4_y"
+  bottom: "exp_kernel_R_L4"
+  top: "f-lconv_L4_y"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L4_y"
+  type: "Convolution"
+  bottom: "f-lconv_L4_y"
+  top: "scaled_flow0_R_L4_y"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L4_y"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L4_y"
+  bottom: "divisor_R_L4"
+  top: "scaled_flow1_R_L4_y"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "scaled_flow_R_L4"
+  bottom: "scaled_flow1_R_L4_x"
+  bottom: "scaled_flow1_R_L4_y"
+  top: "scaled_flow_R_L4"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+#######################################
+#             NetE-M: L3              #
+#######################################
+layer {
+  name: "scaled_flow_R_L4to3"
+  type: "Deconvolution"
+  bottom: "scaled_flow_R_L4"
+  top: "scaled_flow_R_L4to3"
+  convolution_param {
+    num_output: 2
+    group: 2
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "FlowUnscaling_L3_D1"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L4to3"
+  top: "flow_R_L4to3"
+  eltwise_param {
+    operation: SUM
+    coeff: 5.0
+  }
+}
+layer {
+   name: "gxy_L3"
+   type: "Grid"
+   top: "gxy_L3"
+   bottom: "flow_R_L4to3"
+   propagate_down: false
+}
+layer {
+  name: "coords_L3"
+  type: "Eltwise"
+  bottom: "flow_R_L4to3"
+  bottom: "gxy_L3"
+  top: "coords_L3"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_F1_L3"
+  type: "Warp"
+  bottom: "F1_L3"
+  bottom: "coords_L3"
+  top: "warped_F1_L3"
+}
+layer {
+  name: "corr_temp_L3"
+  type: "Correlation"
+  bottom: "F0_L3"
+  bottom: "warped_F1_L3"
+  top: "corr_temp_L3"
+  correlation_param {
+    pad: 6
+    kernel_size: 1
+    max_displacement: 6
+    stride_1: 2
+    stride_2: 2
+  }
+}
+layer {
+  name: "ReLU_corr_temp_L3"
+  type: "ReLU"
+  bottom: "corr_temp_L3"
+  top: "corr_temp_L3"
+  relu_param {
+    negative_slope: 0.1
+  }
+}
+layer {
+  name: "corr_L3"
+  type: "Deconvolution"
+  bottom: "corr_temp_L3"
+  top: "corr_L3"
+  convolution_param {
+    num_output: 49
+    group: 49
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "conv1_D1_L3"
+  type: "Convolution"
+  bottom: "corr_L3"
+  top: "conv1_D1_L3"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D1_L3"
+  type: "ReLU"
+  bottom: "conv1_D1_L3"
+  top: "conv1_D1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D1_L3"
+  type: "Convolution"
+  bottom: "conv1_D1_L3"
+  top: "conv2_D1_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D1_L3"
+  type: "ReLU"
+  bottom: "conv2_D1_L3"
+  top: "conv2_D1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D1_L3"
+  type: "Convolution"
+  bottom: "conv2_D1_L3"
+  top: "conv3_D1_L3"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D1_L3"
+  type: "ReLU"
+  bottom: "conv3_D1_L3"
+  top: "conv3_D1_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D1_res_L3"
+  type: "Convolution"
+  bottom: "conv3_D1_L3"
+  top: "scaled_flow_D1_res_L3"
+  convolution_param {
+    num_output: 2
+    pad: 2
+    kernel_size: 5
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D1_L3"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L4to3"
+  bottom: "scaled_flow_D1_res_L3"
+  top: "scaled_flow_D1_L3"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#            NetE-S: L3               #
+#######################################
+layer {
+  name: "FlowUnscaling_L3_D2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L3"
+  top: "flow_D1_L3"
+  eltwise_param {
+    operation: SUM
+    coeff: 5.0
+  }
+}
+layer {
+  name: "coords_D1_L3"
+  type: "Eltwise"
+  bottom: "flow_D1_L3"
+  bottom: "gxy_L3"
+  top: "coords_D1_L3"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_D1_F1_L3"
+  type: "Warp"
+  bottom: "F1_L3"
+  bottom: "coords_D1_L3"
+  top: "warped_D1_F1_L3"
+}
+layer {
+  name: "F_D2_L3"
+  bottom: "F0_L3"
+  bottom: "warped_D1_F1_L3"
+  bottom: "scaled_flow_D1_L3"
+  top: "F_D2_L3"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_D2_L3"
+  type: "Convolution"
+  bottom: "F_D2_L3"
+  top: "conv1_D2_L3"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D2_L3"
+  type: "ReLU"
+  bottom: "conv1_D2_L3"
+  top: "conv1_D2_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D2_L3"
+  type: "Convolution"
+  bottom: "conv1_D2_L3"
+  top: "conv2_D2_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D2_L3"
+  type: "ReLU"
+  bottom: "conv2_D2_L3"
+  top: "conv2_D2_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D2_L3"
+  type: "Convolution"
+  bottom: "conv2_D2_L3"
+  top: "conv3_D2_L3"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D2_L3"
+  type: "ReLU"
+  bottom: "conv3_D2_L3"
+  top: "conv3_D2_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D2_res_L3"
+  type: "Convolution"
+  bottom: "conv3_D2_L3"
+  top: "scaled_flow_D2_res_L3"
+  convolution_param {
+    num_output: 2
+    pad: 2
+    kernel_size: 5
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D2_L3"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L3"
+  bottom: "scaled_flow_D2_res_L3"
+  top: "scaled_flow_D2_L3"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#            NetE-R: L3               #
+#######################################
+layer {
+  name: "slice_scaled_flow_D_L3"
+  type: "Slice"
+  bottom: "scaled_flow_D2_L3"
+  top: "scaled_flow_D_L3_x"
+  top: "scaled_flow_D_L3_y"
+  slice_param { axis: 1 slice_point: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L3_x"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L3_x"
+  top: "reshaped_scaled_flow_D_L3_x"
+  convolution_param { pad: 2 kernel_size: 5 stride: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L3_y"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L3_y"
+  top: "reshaped_scaled_flow_D_L3_y"
+  convolution_param { pad: 2 kernel_size: 5 stride: 1 }
+}
+layer {
+  name: "mean_scaled_flow_D_L3_x"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L3_x"
+  top: "mean_scaled_flow_D_L3_x"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L3_x"
+  type: "Bias"
+  bottom: "scaled_flow_D_L3_x"
+  bottom: "mean_scaled_flow_D_L3_x"
+  top: "scaled_flow_D_nomean_L3_x"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "mean_scaled_flow_D_L3_y"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L3_y"
+  top: "mean_scaled_flow_D_L3_y"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L3_y"
+  type: "Bias"
+  bottom: "scaled_flow_D_L3_y"
+  bottom: "mean_scaled_flow_D_L3_y"
+  top: "scaled_flow_D_nomean_L3_y"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "FlowUnscaling_L3_R"
+  type: "Eltwise"
+  bottom: "scaled_flow_D2_L3"
+  top: "flow_D2_L3"
+  eltwise_param {
+    operation: SUM
+    coeff: 5.0
+  }
+}
+layer {
+  name: "coords_R_L3"
+  type: "Eltwise"
+  bottom: "flow_D2_L3"
+  bottom: "gxy_L3"
+  top: "coords_R_L3"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_img1_aug_L3"
+  type: "Warp"
+  bottom: "img1_aug_L3"
+  bottom: "coords_R_L3"
+  top: "warped_img1_aug_L3"
+}
+layer {
+  name: "img_diff_L3"
+  type: "Eltwise"
+  bottom: "img0_aug_L3"
+  bottom: "warped_img1_aug_L3"
+  top: "img_diff_L3"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.0
+    coeff: -1.0
+  }
+}
+layer {
+  name: "channelNorm_L3"
+  type: "ChannelNorm"
+  bottom: "img_diff_L3"
+  top: "channelNorm_L3"
+}
+layer {
+  name: "F0_128_L3"
+  type: "Convolution"
+  bottom: "F0_L3"
+  top: "F0_128_L3"
+  convolution_param {
+    num_output: 128
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_F0_128_L3"
+  type: "ReLU"
+  bottom: "F0_128_L3"
+  top: "F0_128_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "concat_F0_R_L3"
+  type: "Concat"
+  bottom: "channelNorm_L3"
+  bottom: "scaled_flow_D_nomean_L3_x"
+  bottom: "scaled_flow_D_nomean_L3_y"
+  bottom: "F0_128_L3"
+  top: "concat_F0_R_L3"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_R_L3"
+  type: "Convolution"
+  bottom: "concat_F0_R_L3"
+  top: "conv1_R_L3"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv1_R_L3"
+  type: "ReLU"
+  bottom: "conv1_R_L3"
+  top: "conv1_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_R_L3"
+  type: "Convolution"
+  bottom: "conv1_R_L3"
+  top: "conv2_R_L3"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv2_R_L3"
+  type: "ReLU"
+  bottom: "conv2_R_L3"
+  top: "conv2_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_R_L3"
+  type: "Convolution"
+  bottom: "conv2_R_L3"
+  top: "conv3_R_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv3_R_L3"
+  type: "ReLU"
+  bottom: "conv3_R_L3"
+  top: "conv3_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_R_L3"
+  type: "Convolution"
+  bottom: "conv3_R_L3"
+  top: "conv4_R_L3"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv4_R_L3"
+  type: "ReLU"
+  bottom: "conv4_R_L3"
+  top: "conv4_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5_R_L3"
+  type: "Convolution"
+  bottom: "conv4_R_L3"
+  top: "conv5_R_L3"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv5_R_L3"
+  type: "ReLU"
+  bottom: "conv5_R_L3"
+  top: "conv5_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6_R_L3"
+  type: "Convolution"
+  bottom: "conv5_R_L3"
+  top: "conv6_R_L3"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv6_R_L3"
+  type: "ReLU"
+  bottom: "conv6_R_L3"
+  top: "conv6_R_L3"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "distH_R_L3"
+  type: "Convolution"
+  bottom: "conv6_R_L3"
+  top: "distH_R_L3"
+  convolution_param {
+    num_output: 25
+    pad_h: 2
+    kernel_h: 5
+    stride_h: 1
+    pad_w: 0
+    kernel_w: 1
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "distW_R_L3"
+  type: "Convolution"
+  bottom: "distH_R_L3"
+  top: "distW_R_L3"
+  convolution_param {
+    num_output: 25
+    pad_h: 0
+    kernel_h: 1
+    stride_h: 1
+    pad_w: 2
+    kernel_w: 5
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "neg_sq_dist_R_L3"
+  type: "NegSquare"
+  bottom: "distW_R_L3"
+  top: "neg_sq_dist_R_L3"
+}
+layer {
+  name: "exp_kernel_R_L3"
+  type: "ExpMax"
+  bottom: "neg_sq_dist_R_L3"
+  top: "exp_kernel_R_L3"
+}
+layer {
+  name: "sum_exp_kernel_R_L3"
+  type: "Convolution"
+  bottom: "exp_kernel_R_L3"
+  top: "sum_exp_kernel_R_L3"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "divisor_R_L3"
+  bottom: "sum_exp_kernel_R_L3"
+  top: "divisor_R_L3"
+  type: "Power"
+  power_param { power: -1 scale: 1 shift: 0 }
+}
+layer {
+  name: "f-lconv_L3_x"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L3_x"
+  bottom: "exp_kernel_R_L3"
+  top: "f-lconv_L3_x"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L3_x"
+  type: "Convolution"
+  bottom: "f-lconv_L3_x"
+  top: "scaled_flow0_R_L3_x"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L3_x"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L3_x"
+  bottom: "divisor_R_L3"
+  top: "scaled_flow1_R_L3_x"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "f-lconv_L3_y"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L3_y"
+  bottom: "exp_kernel_R_L3"
+  top: "f-lconv_L3_y"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L3_y"
+  type: "Convolution"
+  bottom: "f-lconv_L3_y"
+  top: "scaled_flow0_R_L3_y"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L3_y"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L3_y"
+  bottom: "divisor_R_L3"
+  top: "scaled_flow1_R_L3_y"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "scaled_flow_R_L3"
+  bottom: "scaled_flow1_R_L3_x"
+  bottom: "scaled_flow1_R_L3_y"
+  top: "scaled_flow_R_L3"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+#######################################
+#             NetE-M: L2              #
+#######################################
+layer {
+  name: "F0_F1_64_L2"
+  type: "Convolution"
+  bottom: "F0_L2"
+  bottom: "F1_L2"
+  top: "F0_64_L2"
+  top: "F1_64_L2"
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_F0_64_L2"
+  type: "ReLU"
+  bottom: "F0_64_L2"
+  top: "F0_64_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "relu_F1_64_L2"
+  type: "ReLU"
+  bottom: "F1_64_L2"
+  top: "F1_64_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_R_L3to2"
+  type: "Deconvolution"
+  bottom: "scaled_flow_R_L3"
+  top: "scaled_flow_R_L3to2"
+  convolution_param {
+    num_output: 2
+    group: 2
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "FlowUnscaling_L2_D1"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L3to2"
+  top: "flow_R_L3to2"
+  eltwise_param {
+    operation: SUM
+    coeff: 10.0
+  }
+}
+layer {
+   name: "gxy_L2"
+   type: "Grid"
+   top: "gxy_L2"
+   bottom: "flow_R_L3to2"
+   propagate_down: false
+}
+layer {
+  name: "coords_L2"
+  type: "Eltwise"
+  bottom: "flow_R_L3to2"
+  bottom: "gxy_L2"
+  top: "coords_L2"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_F1_64_L2"
+  type: "Warp"
+  bottom: "F1_64_L2"
+  bottom: "coords_L2"
+  top: "warped_F1_64_L2"
+}
+layer {
+  name: "corr_temp_L2"
+  type: "Correlation"
+  bottom: "F0_64_L2"
+  bottom: "warped_F1_64_L2"
+  top: "corr_temp_L2"
+  correlation_param {
+    pad: 6
+    kernel_size: 1
+    max_displacement: 6
+    stride_1: 2
+    stride_2: 2
+  }
+}
+layer {
+  name: "ReLU_corr_temp_L2"
+  type: "ReLU"
+  bottom: "corr_temp_L2"
+  top: "corr_temp_L2"
+  relu_param {
+    negative_slope: 0.1
+  }
+}
+layer {
+  name: "corr_L2"
+  type: "Deconvolution"
+  bottom: "corr_temp_L2"
+  top: "corr_L2"
+  convolution_param {
+    num_output: 49
+    group: 49
+    pad: 1
+    kernel_size: 4
+    stride: 2
+    weight_filler { type: "bilinear" }
+    bias_term: false
+    engine: CUDNN
+  }
+}
+layer {
+  name: "conv1_D1_L2"
+  type: "Convolution"
+  bottom: "corr_L2"
+  top: "conv1_D1_L2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D1_L2"
+  type: "ReLU"
+  bottom: "conv1_D1_L2"
+  top: "conv1_D1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D1_L2"
+  type: "Convolution"
+  bottom: "conv1_D1_L2"
+  top: "conv2_D1_L2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D1_L2"
+  type: "ReLU"
+  bottom: "conv2_D1_L2"
+  top: "conv2_D1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D1_L2"
+  type: "Convolution"
+  bottom: "conv2_D1_L2"
+  top: "conv3_D1_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D1_L2"
+  type: "ReLU"
+  bottom: "conv3_D1_L2"
+  top: "conv3_D1_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D1_res_L2"
+  type: "Convolution"
+  bottom: "conv3_D1_L2"
+  top: "scaled_flow_D1_res_L2"
+  convolution_param {
+    num_output: 2
+    pad: 3
+    kernel_size: 7
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D1_L2"
+  type: "Eltwise"
+  bottom: "scaled_flow_R_L3to2"
+  bottom: "scaled_flow_D1_res_L2"
+  top: "scaled_flow_D1_L2"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-S: L2              #
+#######################################
+layer {
+  name: "FlowUnscaling_L2_D2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L2"
+  top: "flow_D1_L2"
+  eltwise_param {
+    operation: SUM
+    coeff: 10.0
+  }
+}
+layer {
+  name: "coords_D1_L2"
+  type: "Eltwise"
+  bottom: "flow_D1_L2"
+  bottom: "gxy_L2"
+  top: "coords_D1_L2"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_D1_F1_64_L2"
+  type: "Warp"
+  bottom: "F1_64_L2"
+  bottom: "coords_D1_L2"
+  top: "warped_D1_F1_64_L2"
+}
+layer {
+  name: "F_D2_L2"
+  bottom: "F0_64_L2"
+  bottom: "warped_D1_F1_64_L2"
+  bottom: "scaled_flow_D1_L2"
+  top: "F_D2_L2"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_D2_L2"
+  type: "Convolution"
+  bottom: "F_D2_L2"
+  top: "conv1_D2_L2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU1_D2_L2"
+  type: "ReLU"
+  bottom: "conv1_D2_L2"
+  top: "conv1_D2_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_D2_L2"
+  type: "Convolution"
+  bottom: "conv1_D2_L2"
+  top: "conv2_D2_L2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU2_D2_L2"
+  type: "ReLU"
+  bottom: "conv2_D2_L2"
+  top: "conv2_D2_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_D2_L2"
+  type: "Convolution"
+  bottom: "conv2_D2_L2"
+  top: "conv3_D2_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "ReLU3_D2_L2"
+  type: "ReLU"
+  bottom: "conv3_D2_L2"
+  top: "conv3_D2_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "scaled_flow_D2_res_L2"
+  type: "Convolution"
+  bottom: "conv3_D2_L2"
+  top: "scaled_flow_D2_res_L2"
+  convolution_param {
+    num_output: 2
+    pad: 3
+    kernel_size: 7
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "scaled_flow_D2_L2"
+  type: "Eltwise"
+  bottom: "scaled_flow_D1_L2"
+  bottom: "scaled_flow_D2_res_L2"
+  top: "scaled_flow_D2_L2"
+  eltwise_param { operation: SUM }
+}
+#######################################
+#             NetE-R: L2              #
+#######################################
+layer {
+  name: "slice_scaled_flow_D_L2"
+  type: "Slice"
+  bottom: "scaled_flow_D2_L2"
+  top: "scaled_flow_D_L2_x"
+  top: "scaled_flow_D_L2_y"
+  slice_param { axis: 1 slice_point: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L2_x"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L2_x"
+  top: "reshaped_scaled_flow_D_L2_x"
+  convolution_param { pad: 3 kernel_size: 7 stride: 1 }
+}
+layer {
+  name: "reshaped_scaled_flow_D_L2_y"
+  type: "Im2col"
+  bottom: "scaled_flow_D_L2_y"
+  top: "reshaped_scaled_flow_D_L2_y"
+  convolution_param { pad: 3 kernel_size: 7 stride: 1 }
+}
+layer {
+  name: "mean_scaled_flow_D_L2_x"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L2_x"
+  top: "mean_scaled_flow_D_L2_x"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L2_x"
+  type: "Bias"
+  bottom: "scaled_flow_D_L2_x"
+  bottom: "mean_scaled_flow_D_L2_x"
+  top: "scaled_flow_D_nomean_L2_x"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "mean_scaled_flow_D_L2_y"
+  type: "Reduction"
+  bottom: "scaled_flow_D_L2_y"
+  top: "mean_scaled_flow_D_L2_y"
+  reduction_param { operation: MEAN axis: 1 coeff: -1 }
+}
+layer {
+  name: "scaled_flow_D_nomean_L2_y"
+  type: "Bias"
+  bottom: "scaled_flow_D_L2_y"
+  bottom: "mean_scaled_flow_D_L2_y"
+  top: "scaled_flow_D_nomean_L2_y"
+  bias_param { axis: 0 }
+}
+layer {
+  name: "FlowUnscaling_L2_R"
+  type: "Eltwise"
+  bottom: "scaled_flow_D2_L2"
+  top: "flow_D2_L2"
+  eltwise_param {
+    operation: SUM
+    coeff: 10.0
+  }
+}
+layer {
+  name: "coords_R_L2"
+  type: "Eltwise"
+  bottom: "flow_D2_L2"
+  bottom: "gxy_L2"
+  top: "coords_R_L2"
+  eltwise_param { coeff: 1 coeff: 1 }
+}
+layer {
+  name: "warped_img1_aug_L2"
+  type: "Warp"
+  bottom: "img1_aug_L2"
+  bottom: "coords_R_L2"
+  top: "warped_img1_aug_L2"
+}
+layer {
+  name: "img_diff_L2"
+  type: "Eltwise"
+  bottom: "img0_aug_L2"
+  bottom: "warped_img1_aug_L2"
+  top: "img_diff_L2"
+  eltwise_param {
+    operation: SUM
+    coeff: 1.0
+    coeff: -1.0
+  }
+}
+layer {
+  name: "channelNorm_L2"
+  type: "ChannelNorm"
+  bottom: "img_diff_L2"
+  top: "channelNorm_L2"
+}
+layer {
+  name: "F0_128_L2"
+  type: "Convolution"
+  bottom: "F0_L2"
+  top: "F0_128_L2"
+  convolution_param {
+    num_output: 128
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_F0_128_L2"
+  type: "ReLU"
+  bottom: "F0_128_L2"
+  top: "F0_128_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "concat_F0_R_L2"
+  type: "Concat"
+  bottom: "channelNorm_L2"
+  bottom: "scaled_flow_D_nomean_L2_x"
+  bottom: "scaled_flow_D_nomean_L2_y"
+  bottom: "F0_128_L2"
+  top: "concat_F0_R_L2"
+  concat_param { axis: 1 }
+}
+layer {
+  name: "conv1_R_L2"
+  type: "Convolution"
+  bottom: "concat_F0_R_L2"
+  top: "conv1_R_L2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv1_R_L2"
+  type: "ReLU"
+  bottom: "conv1_R_L2"
+  top: "conv1_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv2_R_L2"
+  type: "Convolution"
+  bottom: "conv1_R_L2"
+  top: "conv2_R_L2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv2_R_L2"
+  type: "ReLU"
+  bottom: "conv2_R_L2"
+  top: "conv2_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv3_R_L2"
+  type: "Convolution"
+  bottom: "conv2_R_L2"
+  top: "conv3_R_L2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv3_R_L2"
+  type: "ReLU"
+  bottom: "conv3_R_L2"
+  top: "conv3_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv4_R_L2"
+  type: "Convolution"
+  bottom: "conv3_R_L2"
+  top: "conv4_R_L2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv4_R_L2"
+  type: "ReLU"
+  bottom: "conv4_R_L2"
+  top: "conv4_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv5_R_L2"
+  type: "Convolution"
+  bottom: "conv4_R_L2"
+  top: "conv5_R_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv5_R_L2"
+  type: "ReLU"
+  bottom: "conv5_R_L2"
+  top: "conv5_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "conv6_R_L2"
+  type: "Convolution"
+  bottom: "conv5_R_L2"
+  top: "conv6_R_L2"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "relu_conv6_R_L2"
+  type: "ReLU"
+  bottom: "conv6_R_L2"
+  top: "conv6_R_L2"
+  relu_param { negative_slope: 0.1 }
+}
+layer {
+  name: "distH_R_L2"
+  type: "Convolution"
+  bottom: "conv6_R_L2"
+  top: "distH_R_L2"
+  convolution_param {
+    num_output: 49
+    pad_h: 3
+    kernel_h: 7
+    stride_h: 1
+    pad_w: 0
+    kernel_w: 1
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "distW_R_L2"
+  type: "Convolution"
+  bottom: "distH_R_L2"
+  top: "distW_R_L2"
+  convolution_param {
+    num_output: 49
+    pad_h: 0
+    kernel_h: 1
+    stride_h: 1
+    pad_w: 3
+    kernel_w: 7
+    stride_w: 1
+    engine: CUDNN
+  }
+}
+layer {
+  name: "neg_sq_dist_R_L2"
+  type: "NegSquare"
+  bottom: "distW_R_L2"
+  top: "neg_sq_dist_R_L2"
+}
+layer {
+  name: "exp_kernel_R_L2"
+  type: "ExpMax"
+  bottom: "neg_sq_dist_R_L2"
+  top: "exp_kernel_R_L2"
+}
+layer {
+  name: "sum_exp_kernel_R_L2"
+  type: "Convolution"
+  bottom: "exp_kernel_R_L2"
+  top: "sum_exp_kernel_R_L2"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "divisor_R_L2"
+  bottom: "sum_exp_kernel_R_L2"
+  top: "divisor_R_L2"
+  type: "Power"
+  power_param { power: -1 scale: 1 shift: 0 }
+}
+layer {
+  name: "f-lconv_L2_x"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L2_x"
+  bottom: "exp_kernel_R_L2"
+  top: "f-lconv_L2_x"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L2_x"
+  type: "Convolution"
+  bottom: "f-lconv_L2_x"
+  top: "scaled_flow0_R_L2_x"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L2_x"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L2_x"
+  bottom: "divisor_R_L2"
+  top: "scaled_flow1_R_L2_x"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "f-lconv_L2_y"
+  type: "Eltwise"
+  bottom: "reshaped_scaled_flow_D_L2_y"
+  bottom: "exp_kernel_R_L2"
+  top: "f-lconv_L2_y"
+  eltwise_param { operation: PROD }
+}
+layer {
+  name: "scaled_flow0_R_L2_y"
+  type: "Convolution"
+  bottom: "f-lconv_L2_y"
+  top: "scaled_flow0_R_L2_y"
+  convolution_param {
+    num_output: 1
+    kernel_size: 1
+    weight_filler { type: "constant" value: 1 }
+  }
+}
+layer {
+  name: "scaled_flow1_R_L2_y"
+  type: "Eltwise"
+  bottom: "scaled_flow0_R_L2_y"
+  bottom: "divisor_R_L2"
+  top: "scaled_flow1_R_L2_y"
+  eltwise_param {
+     operation: PROD
+  }
+}
+layer {
+  name: "scaled_flow_R_L2"
+  bottom: "scaled_flow1_R_L2_x"
+  bottom: "scaled_flow1_R_L2_y"
+  top: "scaled_flow_R_L2"
+  type: "Concat"
+  concat_param { axis: 1 }
+}
