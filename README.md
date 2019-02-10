@@ -16,30 +16,6 @@ All code and other materials (including but not limited to the paper, figures, a
  url = {http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/} 
 }</code></pre>
 
-# PyTorch
-A PyTorch-based reimplementation of LiteFlowNet is now available at https://github.com/sniklaus/pytorch-liteflownet.
-
-# Caffe - Prerequisites
-Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 and openCV 2.4.8/3.1.0. 
-
-Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
-
-For openCV 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/src/caffe/layers/resample_layer.cu</code>.
-
-If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
-1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>	
-
-2. Rename <code>cudnn.h</code> to <code>cudnn-5.1.h</code> in the folder <code>/cuda-8-cudnn-5.1/include</code>	
-
-3. <pre><code>$ sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code>	
-   <code>$ sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
-
-4. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>/include/caffe/util/cudnn.hpp</code>.
-    
-# Compiling
-<pre><code>$ cd LiteFlowNet</code>
-<code>$ make -j 8 tools pycaffe</code></pre>
-
 # Datasets
 1. <a href="https://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip"> FlyingChairs dataset</a> (31GB) and <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt">train-validation split</a>.
 2. <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/raw_data/flyingthings3d__frames_cleanpass.tar"> RGB image pairs (clean pass)</a> (37GB) and <a href="https://lmb.informatik.uni-freiburg.de/data/SceneFlowDatasets_CVPR16/Release_april16/data/FlyingThings3D/derived_data/flyingthings3d__optical_flow.tar.bz2"> flow fields</a> (311GB) for Things3D dataset.
@@ -71,6 +47,30 @@ If your machine installed a newer version of cuDNN, you do not need to downgrade
 <td align="center">4</td>
 </tr>    
 </tbody></table>
+
+# PyTorch
+A PyTorch-based reimplementation of LiteFlowNet is now available at https://github.com/sniklaus/pytorch-liteflownet.
+
+# Caffe - Prerequisites
+Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 and openCV 2.4.8/3.1.0. 
+
+Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
+
+For openCV 3+, you may need to change <code>opencv2/gpu/gpu.hpp</code> to <code>opencv2/cudaarithm.hpp</code> in <code>/src/caffe/layers/resample_layer.cu</code>.
+
+If your machine installed a newer version of cuDNN, you do not need to downgrade it. You can do the following trick: 
+1. Download <code>cudnn-8.0-linux-x64-v5.1.tgz</code> and untar it to a temp folder, say <code>cuda-8-cudnn-5.1</code>	
+
+2. Rename <code>cudnn.h</code> to <code>cudnn-5.1.h</code> in the folder <code>/cuda-8-cudnn-5.1/include</code>	
+
+3. <pre><code>$ sudo cp cuda-8-cudnn-5.1/include/cudnn-5.1.h /usr/local/cuda/include/</code>	
+   <code>$ sudo cp cuda-8-cudnn-5.1/lib64/lib* /usr/local/cuda/lib64/</code></pre>	
+
+4. Replace <code>#include <cudnn.h></code> to <code>#include <cudnn-5.1.h></code> in <code>/include/caffe/util/cudnn.hpp</code>.
+    
+# Compiling
+<pre><code>$ cd LiteFlowNet</code>
+<code>$ make -j 8 tools pycaffe</code></pre>
 
 # Feature warping (f-warp) layer
 The source files include <code>/src/caffe/layers/warp_layer.cpp</code>, <code>/src/caffe/layers/warp_layer.cu</code>, and <code>/include/caffe/layers/warp_layer.hpp</code>. 
