@@ -5,7 +5,7 @@ It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
-# LiteFlowNet - PyTorch
+# PyTorch
 A PyTorch-based reimplementation of LiteFlowNet is now available at https://github.com/sniklaus/pytorch-liteflownet.
 
 # License and Citation 
