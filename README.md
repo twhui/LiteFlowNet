@@ -48,10 +48,10 @@ All code and other materials (including but not limited to the paper, figures, a
 </tr>    
 </tbody></table>
 
-# PyTorch
+# PyTorch - Reimplementation
 A PyTorch-based reimplementation of LiteFlowNet is now available at https://github.com/sniklaus/pytorch-liteflownet.
 
-# Caffe - Prerequisites
+# Caffe - Official
 Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 and openCV 2.4.8/3.1.0. 
 
 Edit Makefile.config (and Makefile) if necessary in order to fit your machine's settings.
