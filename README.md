@@ -5,8 +5,7 @@ It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
-An extented work of LiteFlowNet is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. Comparing to our earlier work, LiteFlowNet2 improves the optical flow accuracy on Sintel clean pass by 24%, Sintel final pass by 8.9%,
-KITTI 2012 by 16.8%, and KITTI 2015 by 17.5%. Its runtime is 2.2 times faster!
+An extented work of LiteFlowNet is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
 
 # License and Citation 
 All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
