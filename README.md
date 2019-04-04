@@ -5,7 +5,7 @@ It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
-An extented work of LiteFlowNet is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
+An extented work (LiteFlowNet2) of LiteFlowNet is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
 
 # License and Citation 
 All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
