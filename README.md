@@ -10,26 +10,26 @@ For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.e
 <thead>
 <tr>
 <th align="center"></th>
-<th align="center">Model Size (M)</th>
 <th align="center">KITTI12 Testing Set (Out-Noc)</th>
 <th align="center">KITTI15 Testing Set (Fl-all)</th>
+<th align="center">Model Size (M)</th>
 </tr>
 <tr>
 <td align="center">FlowNet2 (CVPR17)</td>
-<td align="center">162.49</td>
 <td align="center">4.82%</td>
 <td align="center">11.48%</td>
+<td align="center">162.49</td>
 <tr>
 <td align="center">PWC-Net (CVPR18)</td>
-<td align="center">8.75</td>
 <td align="center">4.22%</td>
 <td align="center">9.60%</td>
+<td align="center">8.75</td>
 </tr>  
 <tr>
 <td align="center"><strong>LiteFlowNet (CVPR18)</strong></td>
-<td align="center"><strong>5.37</strong></td>
 <td align="center"><strong>3.27%</strong></td>
 <td align="center"><strong>9.38%</strong></td>
+<td align="center"><strong>5.37</strong></td>
 </tr>    
 </tbody></table>
 
