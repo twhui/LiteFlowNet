@@ -5,7 +5,35 @@ It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg
 
 For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
-Extended work (LiteFlowNet2) is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Model Size (M)</th>
+<th align="center">KITTI12 Testing Set (Out-Noc)</th>
+<th align="center">KITTI15 Testing Set (Fl-all)</th>
+</tr>
+<tr>
+<td align="center">FlowNet2 (CVPR17)</td>
+<td align="center">162.49</td>
+<td align="center">4.82%</td>
+<td align="center">11.48%</td>
+<tr>
+<td align="center">PWC-Net (CVPR18)</td>
+<td align="center">8.75</td>
+<td align="center">4.22%</td>
+<td align="center">9.60%</td>
+</tr>  
+<tr>
+<td align="center"><strong>LiteFlowNet (CVPR18)</strong></td>
+<td align="center"><strong>5.37</strong></td>
+<td align="center"><strong>3.27%</strong></td>
+<td align="center"><strong>9.38%</strong></td>
+</tr>    
+</tbody></table>
+
+<strong>NEW!</strong> Our extended work (LiteFlowNet2) is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
 
 # License and Citation 
 All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
