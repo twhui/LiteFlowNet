@@ -134,6 +134,12 @@ Two custom layers (<code>ExpMax</code> and <code>NegSquare</code>) are optimized
 # Trained models	
 The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>, <code>liteflownet-ft-kitti</code>) are available in the folder <code>/models/trained</code>. Untar the files to the same folder before you use it.
 
+<code>liteflownet</code>: Trained on Chairs and then fine-tuned on Things3D.
+
+<code>liteflownet-ft-sintel</code>: Model used for Sintel benchmark.
+
+<code>liteflownet-ft-kitti</code>: Model used for KITTI benchmark.
+
 # Testing 
 1. Open the testing folder
 <pre><code>$ cd LiteFlowNet/models/testing</pre></code>
