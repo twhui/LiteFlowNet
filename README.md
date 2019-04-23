@@ -118,7 +118,7 @@ Two custom layers (<code>ExpMax</code> and <code>NegSquare</code>) are optimized
 <pre><code>$ cd LiteFlowNet/data</code>
 <code>$ ./make-lmdbs-train.sh</code></pre>
 
-2. Copy files from <code>/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure the settings are correct for your application.
+2. Copy files from <code>/models/training_template</code> to a new model folder (e.g. <code>NEW</code>). Edit all the files and make sure the settings are correct for your application. Model for the complete network is provided. LiteFlowNet uses stage-wise training to boost the performance. Please refer to <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>my paper</strong></str></a></i> for more details.
 <pre><code>$ mkdir LiteFlowNet/models/NEW</code>
 <code>$ cd LiteFlowNet/models/NEW</code>
 <code>$ cp ../training_template/solver.prototxt.template solver.prototxt</code>	
