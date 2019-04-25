@@ -1,9 +1,9 @@
 # LiteFlowNet
 This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for my paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
 
-It comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
+LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including cascaded flow inference, feature warping (f-warp) layer, and flow regularization by feature-driven local convolution (f-lcon) layer. LiteFlowNet outperforms PWC-Net (CVPR18) on KITTI and has a smaller model size.
 
-For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
+For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
 </ul>
 <table>
@@ -34,6 +34,8 @@ For more details about LiteFlowNet, please visit <a href="http://mmlab.ie.cuhk.e
 </tbody></table>
 
 <strong>NEW!</strong> Our extended work (LiteFlowNet2) is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
+
+The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
 # License and Citation 
 All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
