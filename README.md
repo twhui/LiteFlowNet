@@ -33,7 +33,7 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 </tr>    
 </tbody></table>
 
-<strong>NEW!</strong> Our extended work (LiteFlowNet2) is now available at <strong>https://github.com/twhui/LiteFlowNet2</strong>. 
+<strong>NEW! Our extended work (LiteFlowNet2) is now available at https://github.com/twhui/LiteFlowNet2</strong>. 
 
 The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
 
