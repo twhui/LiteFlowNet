@@ -1,7 +1,7 @@
 # LiteFlowNet
 This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for my paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR18 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
 
-LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including cascaded flow inference, feature warping (f-warp) layer, and flow regularization by feature-driven local convolution (f-lcon) layer. LiteFlowNet outperforms PWC-Net (CVPR18) on KITTI and has a smaller model size.
+LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including pyramidal features, cascaded flow inference (cost volume + sub-pixel refinement), feature warping (f-warp) layer, and flow regularization by feature-driven local convolution (f-lcon) layer. LiteFlowNet outperforms PWC-Net (CVPR18) on KITTI and has a smaller model size.
 
 For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
