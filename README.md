@@ -157,6 +157,4 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 <pre><code>$ test_MODE.py img1_pathList.txt img2_pathList.txt results</code></pre>
 
 # Evaluation
-1. End-point error (EPE) per image can be calculated using the provided script <code>/models/testing/util/endPointErr.m</code>
-
-2. Average end-point error (AEE) is simply computed by taking the average of all EPE.
+Average end-point error can be computed using the provided script <code>/models/testing/util/endPointErr.m</code>
