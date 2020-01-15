@@ -33,6 +33,7 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 </tr>    
 </tbody></table>
 
+# LiteFlowNet2
 <strong>NEW! Our extended work (LiteFlowNet2) is now available at https://github.com/twhui/LiteFlowNet2</strong>. 
 
 # License and Citation 
