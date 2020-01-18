@@ -36,14 +36,15 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 # LiteFlowNet2
 <strong>NEW! Our extended work (LiteFlowNet2) is now available at https://github.com/twhui/LiteFlowNet2</strong>. 
 
-# License and Citation 
-All code and other materials (including but not limited to the paper, figures, and tables) are provided for research purposes only and without any warranty. Any commercial use requires our consent. When using any parts of the code package or the paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) in your work, please cite the following paper:
+# License and Citation
+This software and associated documentation files (the "Software"), and the research paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) including but not limited to the figures, and tables (the "Paper") are provided for research purposes only and without any warranty. Any commercial use requires my consent. When using any parts of the Software or the Paper in your work, please cite the following paper:
 
 <pre><code>@InProceedings{hui18liteflownet,    
  author = {Tak-Wai Hui and Xiaoou Tang and Chen Change Loy},    
  title = {LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation},    
  booktitle  = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},    
- year = {2018},    
+ year = {2018},  
+ pages = {8981--8989},
  url = {http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/} 
 }</code></pre>
 
@@ -80,7 +81,7 @@ All code and other materials (including but not limited to the paper, figures, a
 </tbody></table>
 
 # PyTorch - Reimplementation
-A PyTorch-based reimplementation of LiteFlowNet is now available at https://github.com/sniklaus/pytorch-liteflownet.
+A PyTorch-based reimplementation of LiteFlowNet is also available at https://github.com/sniklaus/pytorch-liteflownet.
 
 # Caffe - Official
 The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
