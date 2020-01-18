@@ -1,8 +1,8 @@
-#######################################
-#        LiteFlowNet CVPR 2018        #
-#                by                   #
-#           T.-W. Hui, CUHK           #
-#######################################
+####################################
+#  LiteFlowNet, CVPR 2020          #
+#                                  #
+#  Copyright (c) 2018 Tak-Wai Hui  #
+####################################
 layer {
   name: "CustomData1"
   type: "CustomData"
