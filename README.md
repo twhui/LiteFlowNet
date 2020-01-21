@@ -125,7 +125,7 @@ This software and associated documentation files (the "Software"), and the resea
 </tr>    
 </tbody></table>
 
-# Caffe - Official
+# Prerequisite
 The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models. 
 
 Reimplementations in <a href="https://github.com/twhui/LiteFlowNet#Reimplementations-in-PyTorch-and-TensorFlow">Pytorch and TensorFlow</a> are also available.
