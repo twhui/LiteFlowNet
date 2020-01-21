@@ -203,6 +203,6 @@ The trained models (<code>liteflownet</code>, <code>liteflownet-ft-sintel</code>
 # Evaluation
 Average end-point error can be computed using the provided script <code>/models/testing/util/endPointErr.m</code>
 
-# PyTorch and TensorFlow - Reimplementations
+# Reimplementations in PyTorch and TensorFlow
 1. A PyTorch-based reimplementation of LiteFlowNet is available at https://github.com/sniklaus/pytorch-liteflownet. 
 2. A TensorFlow-based reimplementation of LiteFlowNet is also available at https://github.com/keeper121/liteflownet-tf2.
