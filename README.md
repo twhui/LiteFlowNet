@@ -17,7 +17,7 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 <tr>
 <td align="center">FlowNet2 (CVPR17)</td>
 <td align="center">4.82%</td>
-<td align="center">11.48%</td>
+<td align="center">10.41%</td>
 <td align="center">162.49</td>
 <tr>
 <td align="center">PWC-Net (CVPR18)</td>
