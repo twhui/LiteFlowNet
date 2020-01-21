@@ -126,7 +126,9 @@ This software and associated documentation files (the "Software"), and the resea
 </tbody></table>
 
 # Caffe - Official
-The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models.
+The code package comes as the modified Caffe from <a href="https://lmb.informatik.uni-freiburg.de/resources/software.php">DispFlowNet</a> and <a href="https://github.com/lmb-freiburg/flownet2">FlowNet2</a> with our new layers, scripts, and trained models. 
+
+Reimplementations in <a href="https://github.com/twhui/LiteFlowNet#Reimplementations-in-PyTorch-and-TensorFlow">Pytorch and TensorFlow</a> are also available.
 
 Installation was tested under Ubuntu 14.04.5/16.04.2 with CUDA 8.0, cuDNN 5.1 and openCV 2.4.8/3.1.0. 
 
