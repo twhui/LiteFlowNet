@@ -81,6 +81,73 @@ LiteFlowNet2 in TPAMI 2020, another lightweight convolutional network, is evolve
 
 Note: *Runtime is averaged over 100 runs for a Sintel's image pair of size 1024 × 436. 
 
+# LiteFlowNet3
+<strong>NEW! Our extended work (LiteFlowNet3) is now available at https://github.com/twhui/LiteFlowNet3</strong>. 
+
+We ameliorate the issue of outliers in the cost volume by amending each cost vector through an adaptive modulation prior to the flow decoding. We further improve the flow accuracy by exploring local flow consistency. To this end, each inaccurate optical flow is replaced with an accurate one from a nearby position through a novel warping
+of the flow field. LiteFlowNet3 not only achieves promising results on public benchmarks but also has a small model size and a fast runtime.
+
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Sintel Clean Testing Set</th>
+<th align="center">Sintel Final Testing Set</th>
+<th align="center">KITTI12 Testing Set (Avg-All)</th>
+<th align="center">KITTI15 Testing Set (Fl-fg)</th>
+<th align="center">Model Size (M)</th> 
+<th align="center">Runtime* (ms) GTX 1080</th> 
+</tr>
+<tr>
+<td align="center">LiteFlowNet (CVPR18)</td>
+<td align="center">4.54</td>
+<td align="center">5.38</td>
+<td align="center">1.6</td>
+<td align="center">7.99%</td>
+<td align="center">5.4</td>
+<td align="center">88</td>
+</tr> 
+<tr>
+<td align="center">LiteFlowNet2 (TPAMI20)</td>
+<td align="center">3.48</td>
+<td align="center">4.69</td>
+<td align="center">1.4</td>
+<td align="center">7.64%</td>
+<td align="center">6.4</td>
+<td align="center"><strong>40</strong></td>
+</tr> 
+<tr>
+<td align="center">HD3 (CVPR19)</td>
+<td align="center">4.79</td>
+<td align="center">4.67</td>
+<td align="center">1.4</td>
+<td align="center">9.02%</td>
+<td align="center">39.9</td>
+<td align="center">128</td>
+</tr> 
+<tr>
+<td align="center">IRR-PWC (CVPR19)</td>
+<td align="center">3.84</td>
+<td align="center">4.58</td>
+<td align="center">1.6</td>
+<td align="center">7.52%</td>
+<td align="center">6.4</td>
+<td align="center">180</td>
+</tr>
+<tr>
+<td align="center"><strong>LiteFlowNet3 (ECCV20)</strong></td>
+<td align="center"><strong>3.03</strong></td>
+<td align="center"><strong>4.53</strong></td>
+<td align="center"><strong>1.3</strong></td>
+<td align="center"><strong>6.96%</strong></td>
+<td align="center"><strong>5.2</strong></td>
+<td align="center">59</td>
+</tr>    
+</tbody></table>
+
+Note: *Runtime is averaged over 100 runs for a Sintel's image pair of size 1024 × 436. 
+
 # License and Citation
 This software and associated documentation files (the "Software"), and the research paper (<i>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</i>) including but not limited to the figures, and tables (the "Paper") are provided for research purposes only and without any warranty. Any commercial use requires my consent. When using any parts of the Software or the Paper in your work, please cite the following paper:
 
