@@ -7,7 +7,7 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 
 A demo video is available on <a href="https://www.youtube.com/watch?v=pfQ0zFwv-hM?autoplay=1"> <strong>YouTube</strong></a>.
  
-Oral presentation at CVPR 2018 is also available on <a href="http://www.youtube.com/watch?v=LBJ20kxr1a0&t=60m33s?autoplay=1"> <strong>YouTube</strong></a>.
+Oral presentation at CVPR 2018 is also available on <a href="http://www.youtube.com/watch?v=LBJ20kxr1a0&t=60m33s"> <strong>YouTube</strong></a>.
 
 </ul>
 <table>
