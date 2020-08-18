@@ -1,7 +1,7 @@
 # LiteFlowNet
 This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for my paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR 2018 (Spotlight). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
 
-LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including pyramidal features, cascaded flow inference (cost volume + sub-pixel refinement), feature warping (f-warp) layer, and flow regularization by feature-driven local convolution (f-lconv) layer. LiteFlowNet outperforms PWC-Net (CVPR 2018) on KITTI and has a smaller model size.
+LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including (1) pyramidal features, (2) cascaded flow inference (cost volume + sub-pixel refinement), (3) feature warping (f-warp) layer, and (4) flow regularization by feature-driven local convolution (f-lconv) layer. LiteFlowNet outperforms PWC-Net (CVPR 2018) on KITTI and has a smaller model size (less than ~40% than PWC-Net).
 
 For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
@@ -34,7 +34,7 @@ For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.
 </tbody></table>
 
 # LiteFlowNet2
-<strong>NEW! Our extended work (LiteFlowNet2) is now available at https://github.com/twhui/LiteFlowNet2</strong>. 
+<strong>NEW! Our extended work (LiteFlowNet2, TPAMI 2020) is now available at https://github.com/twhui/LiteFlowNet2</strong>. 
 
 LiteFlowNet2 in TPAMI 2020, another lightweight convolutional network, is evolved from LiteFlowNet (CVPR 2018) to better address the problem of optical flow estimation by improving flow accuracy and computation time. Comparing to our earlier work, LiteFlowNet2 improves the optical flow accuracy on Sintel clean pass by 23.3%, Sintel final pass by 12.8%, KITTI 2012 by 19.6%, and KITTI 2015 by 18.8%. Its runtime is 2.2 times faster!
 
@@ -82,7 +82,7 @@ LiteFlowNet2 in TPAMI 2020, another lightweight convolutional network, is evolve
 Note: *Runtime is averaged over 100 runs for a Sintel's image pair of size 1024 × 436. 
 
 # LiteFlowNet3
-<strong>NEW! Our extended work (LiteFlowNet3) is now available at https://github.com/twhui/LiteFlowNet3</strong>. 
+<strong>NEW! Our extended work (LiteFlowNet3, ECCV 2020) is now available at https://github.com/twhui/LiteFlowNet3</strong>. 
 
 We ameliorate the issue of outliers in the cost volume by amending each cost vector through an adaptive modulation prior to the flow decoding. We further improve the flow accuracy by exploring local flow consistency. To this end, each inaccurate optical flow is replaced with an accurate one from a nearby position through a novel warping
 of the flow field. LiteFlowNet3 not only achieves promising results on public benchmarks but also has a small model size and a fast runtime.
