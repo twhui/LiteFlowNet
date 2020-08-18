@@ -5,6 +5,8 @@ LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop se
 
 For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
+A demo video is available on <a href="https://www.youtube.com/watch?v=pfQ0zFwv-hM"> <strong>YouTube</strong></a>.
+
 </ul>
 <table>
 <thead>
