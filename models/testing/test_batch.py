@@ -41,26 +41,6 @@ def check_image_lists(lists):
 
     base_size = get_image_size(images[0][0])
 
-    for idx in range(len(images[0])):
-        print("Checking image pair %d of %d" % (idx+1, len(images[0])))
-        img1 = images[0][idx]
-        img2 = images[1][idx]
-
-        if not os.path.isfile(img1):
-            print('Image %s not found' % img1)
-            sys.exit(1)
-
-        if not os.path.isfile(img2):
-            print('Image %s not found' % img2)
-            sys.exit(1)
-
-        img1_size = get_image_size(img1)
-        img2_size = get_image_size(img2)
-
-        if not (sizes_equal(base_size, img1_size) and sizes_equal(base_size, img2_size)):
-            print('The images do not all have the same size. (Images: %s or %s vs. %s)\n Please use the pair-mode.' % (img1, img2, images[0][idx]))
-            sys.exit(1)
-
     return base_size[0], base_size[1], len(images[0])
 
 
@@ -153,7 +133,6 @@ with open('tmp/deploy.prototxt', "w") as tfile:
     tfile.write(proto)
 
 # Run caffe
-
 args = [caffe_bin, 'test', '-model', 'tmp/deploy.prototxt',
         '-weights', '../trained/' + cnn_model + '.caffemodel',
         '-iterations', str(list_length),
