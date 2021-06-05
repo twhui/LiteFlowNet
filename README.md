@@ -279,3 +279,6 @@ Average end-point error can be computed using the provided script <code>/models/
 # Reimplementations in PyTorch and TensorFlow
 1. A PyTorch-based reimplementation of LiteFlowNet is available at https://github.com/sniklaus/pytorch-liteflownet. 
 2. A TensorFlow-based reimplementation of LiteFlowNet is also available at https://github.com/keeper121/liteflownet-tf2.
+
+# Declaration
+The early version of LiteFlowNet was submitted to <a href="https://iccv2017.thecvf.com/"> ICCV 2017</a> for review in March 2017. The improved work was published in <a href="https://cvpr2018.thecvf.com/">CVPR 2018</a>. 
