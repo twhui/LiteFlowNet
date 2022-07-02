@@ -1,11 +1,13 @@
 # LiteFlowNet
 <p align="center"><img src="./figure/LiteFlowNet.png" width="800" /></p>
- 
+<p align = "center">The network structure of LiteFlowNet. For the ease of representation, only a 3-level design is shown.</p>
+
+<p align="center"><img src="./figure/cascaded_flow_inference.png" width="400" /></p>
+<p align = "center">A cascaded flow inference module M:S in NetE.</p>
+
 This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the offical release of <strong>LiteFlowNet</strong> for my paper <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation</strong></a> in CVPR 2018 (Spotlight paper, 6.6%). <i>The up-to-date version of the paper is available on <a href="https://arxiv.org/pdf/1805.07036.pdf"><strong>arXiv</strong></a></i>. 
 
-LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including (1) pyramidal features, (2) cascaded flow inference (cost volume + sub-pixel refinement), (3) feature warping (f-warp) layer, and (4) flow regularization by feature-driven local convolution (f-lconv) layer. LiteFlowNet outperforms PWC-Net (CVPR 2018) on KITTI and has a smaller model size (less than PWC-Net by ~40%).
-
-For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
+LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including (1) pyramidal features, (2) cascaded flow inference (cost volume + sub-pixel refinement), (3) feature warping (f-warp) layer, and (4) flow regularization by feature-driven local convolution (f-lconv) layer. LiteFlowNet outperforms PWC-Net (CVPR 2018) on KITTI and has a smaller model size (less than PWC-Net by ~40%). For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
 [A demo video is available on YouTube<p align="center"><img src="./figure/demo_video_thumbnail.png" width="600" /></p>](https://www.youtube.com/watch?v=pfQ0zFwv-hM?autoplay=1)
 
