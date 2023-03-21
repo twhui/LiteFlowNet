@@ -9,7 +9,9 @@ This repository (<strong>https://github.com/twhui/LiteFlowNet</strong>) is the o
 
 LiteFlowNet is a lightweight, fast, and accurate opitcal flow CNN. We develop several specialized modules including (1) pyramidal features, (2) cascaded flow inference (cost volume + sub-pixel refinement), (3) feature warping (f-warp) layer, and (4) flow regularization by feature-driven local convolution (f-lconv) layer. LiteFlowNet outperforms PWC-Net (CVPR 2018) on KITTI and has a smaller model size (less than PWC-Net by ~40%). For more details about LiteFlowNet, you may visit <a href="http://mmlab.ie.cuhk.edu.hk/projects/LiteFlowNet/"><strong>my project page</strong></a>.
 
-[A demo video is available on YouTube<p align="center"><img src="./figure/demo_video_thumbnail.png" width="600" /></p>](https://www.youtube.com/watch?v=pfQ0zFwv-hM?autoplay=1)
+<a href="https://www.youtube.com/watch?v=pfQ0zFwv-hM">
+<p align="center"><img src="./figure/demo_video_thumbnail.png" width="600" /></p>
+</a>
 
 Oral presentation at CVPR 2018 is also available on <a href="http://www.youtube.com/watch?v=LBJ20kxr1a0&t=60m33s"> <strong>YouTube</strong></a>.
 
